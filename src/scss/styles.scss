@@ -1,2 +1,12 @@
 @import "variables";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+.nav-btns {
+  @media (min-width: 800px) {
+    top: -50px;
+  }
+}
+
+.header-container {
+  max-width: 1200px;
+}
