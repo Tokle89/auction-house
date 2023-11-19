@@ -9,6 +9,8 @@
     "build": "sass src/scss:dist/css",
     "watch": "sass src/scss:dist/css --watch",
     "format": "prettier -w src/**/*.js",
+    "lint": "eslint src/**/*.js",
+    "lint-fix": "eslint src/**/*.js --cache --fix",
     "dev": "vite",
     "build-vite": "vite build",
     "preview": "vite preview"
@@ -30,6 +32,7 @@
     "url": "https://github.com/Tokle89/auction-house/issues"
   },
   "devDependencies": {
+    "eslint": "^8.54.0",
     "prettier": "^3.1.0",
     "sass": "^1.69.5",
     "vite": "^5.0.0"
