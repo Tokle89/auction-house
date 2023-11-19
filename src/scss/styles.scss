@@ -1,12 +1,23 @@
 @import "variables";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "typography";
 
-.nav-btns {
-  @media (min-width: 800px) {
-    top: -50px;
+//nav
+.header-container {
+  max-width: 1320px;
+
+  .btn {
+    min-width: 160px;
   }
 }
 
-.header-container {
-  max-width: 1200px;
+.nav-border {
+  @media (max-width: 767px) {
+    border: solid $warning;
+    border-width: 1px 0px 1px 0px;
+  }
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
 }
