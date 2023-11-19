@@ -8,6 +8,7 @@
   "scripts": {
     "build": "sass src/scss:dist/css",
     "watch": "sass src/scss:dist/css --watch",
+    "format": "prettier -w src/**/*.js",
     "dev": "vite",
     "build-vite": "vite build",
     "preview": "vite preview"
@@ -23,13 +24,13 @@
     "Bootstrap",
     "Vite"
   ],
-  "Author" : "Fredrik Tokle <fredriktokle@gmail.com>",
+  "Author": "Fredrik Tokle <fredriktokle@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Tokle89/auction-house/issues"
   },
-
   "devDependencies": {
+    "prettier": "^3.1.0",
     "sass": "^1.69.5",
     "vite": "^5.0.0"
   },
