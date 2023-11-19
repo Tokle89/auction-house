@@ -21,3 +21,11 @@
 .navbar-toggler:focus {
   box-shadow: none;
 }
+//body
+body {
+  min-height: 100vh;
+  margin: 0px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+}
