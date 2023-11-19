@@ -2,6 +2,8 @@
   "name": "auction-house",
   "private": true,
   "version": "0.1.1",
+  "description": "",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "build": "sass src/scss:dist/css",
@@ -10,6 +12,23 @@
     "build-vite": "vite build",
     "preview": "vite preview"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tokle89/auction-house.git"
+  },
+  "keywords": [
+    "Javascript",
+    "SCSS",
+    "SASS",
+    "Bootstrap",
+    "Vite"
+  ],
+  "Author" : "Fredrik Tokle <fredriktokle@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tokle89/auction-house/issues"
+  },
+
   "devDependencies": {
     "sass": "^1.69.5",
     "vite": "^5.0.0"
