@@ -1,6 +1,7 @@
 @import "variables";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "typography";
+@import "base";
 
 //nav
 .header-container {
@@ -28,4 +29,27 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
+}
+
+.current {
+  text-decoration: underline;
+  color: $secondary;
+}
+
+img {
+  width: 100%;
+}
+
+.carousel {
+  border: solid $warning;
+  border-width: 1px 0px 1px 0px;
+
+  .carousel-item {
+    .carousel-item-container {
+      max-width: 900px;
+    }
+    .carousel-item-container > * {
+      flex: 1;
+    }
+  }
 }

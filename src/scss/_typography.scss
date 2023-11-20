@@ -2,7 +2,22 @@
   font-family: "Copperplate Gothic";
   src: url("../fonts/Copperplate\ Gothic\ Bold\ Regular.ttf") format("truetype");
 }
+@font-face {
+  font-family: "Verdana";
+  src: url("../fonts/verdana.ttf") format("truetype");
+}
 
+@font-face {
+  font-family: "Century Schoolbook";
+  src: url("../fonts/CenturySchoolbookBold.ttf") format("truetype");
+}
 .logo {
   font-family: "Copperplate Gothic";
+}
+
+h1 {
+  font-family: "Century Schoolbook";
+}
+body {
+  font-family: "verdana";
 }

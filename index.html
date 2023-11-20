@@ -36,7 +36,7 @@
             >
               <ul class="d-md-none list-unstyled m-0">
                 <li class="p-2 py-3 nav-border">
-                  <a href="#" class="fs-3 nav-link">Newest</a>
+                  <a href="#" class="fs-3 nav-link">Home</a>
                 </li>
                 <li class="px-2 py-3 nav-border">
                   <a href="#" class="fs-3 nav-link">Hottest</a>
@@ -56,10 +56,10 @@
       </div>
     </header>
     <main class="bg-light">
-      <div class="container">
+      <div class="container w-25 my-5">
         <div class="sub-nav d-flex justify-content-between">
-          <a href="#" class="fs-3 nav-link">Newest</a>
-          <a href="#" class="fs-3 nav-link"
+          <a href="#" class="nav-link current">Home</a>
+          <a href="#" class="nav-link"
             ><span class="text-primary">+</span>Hottest</a
           >
         </div>
@@ -74,7 +74,124 @@
           </form>
         </div>
       </div>
-      <p>hello world</p>
+      <section>
+        <div
+          id="carouselExampleDark"
+          class="carousel carousel-dark slide bg-white py-5"
+        >
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleDark"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleDark"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleDark"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <div class="w-100 d-flex justify-content-center">
+                <div class="carousel-item-container d-flex p-2">
+                  <img
+                    src="./public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
+                    alt=""
+                  />
+                  <div class="ps-4 content-container">
+                    <h1>Art Painting nr10</h1>
+                    <p class="text-dark">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Enim maxime magnam adipisci nemo sequi! Fugit, rem
+                      deserunt.
+                    </p>
+                    <p class="fw-bold">Bidding end: 13.11.2013</p>
+                    <p class="fw-bold">
+                      Current bid: <span class="text-danger fw-bold">200$</span>
+                    </p>
+                    <button class="btn btn-secondary text-white">View</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <div class="w-100 d-flex justify-content-center">
+                <div class="carousel-item-container d-flex p-2">
+                  <img
+                    src="./public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
+                    alt=""
+                  />
+                  <div class="ps-4 content-container">
+                    <h1>Art Painting nr20</h1>
+                    <p class="text-dark">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Enim maxime magnam adipisci nemo sequi! Fugit, rem
+                      deserunt.
+                    </p>
+                    <p class="fw-bold">Bidding end: 13.11.2013</p>
+                    <p class="fw-bold">
+                      Current bid: <span class="text-danger fw-bold">200$</span>
+                    </p>
+                    <button class="btn btn-secondary text-white">View</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="w-100 d-flex justify-content-center">
+                <div class="carousel-item-container d-flex p-2">
+                  <img
+                    src="./public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
+                    alt=""
+                  />
+                  <div class="ps-4 content-container">
+                    <h1>Art Painting nr30</h1>
+                    <p class="text-dark">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Enim maxime magnam adipisci nemo sequi! Fugit, rem
+                      deserunt.
+                    </p>
+                    <p class="fw-bold">Bidding end: 13.11.2013</p>
+                    <p class="fw-bold">
+                      Current bid: <span class="text-danger fw-bold">200$</span>
+                    </p>
+                    <button class="btn btn-secondary text-white">View</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
     </main>
     <footer><h3>lorem impsum</h3></footer>
   </body>
