@@ -8,3 +8,12 @@ $btn-border-radius: 0px;
 
 $navbar-light-icon-color: $secondary;
 $input-border-radius: 0px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 560px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);

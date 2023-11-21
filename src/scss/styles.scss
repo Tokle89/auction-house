@@ -3,7 +3,7 @@
 @import "typography";
 @import "base";
 
-//nav
+//header
 .header-container {
   max-width: 1320px;
 
@@ -22,6 +22,10 @@
 .navbar-toggler:focus {
   box-shadow: none;
 }
+
+.search-container {
+  max-width: 550px;
+}
 //body
 body {
   min-height: 100vh;
@@ -38,8 +42,13 @@ body {
 
 img {
   width: 100%;
+  object-fit: cover;
 }
 
+a {
+  text-decoration: none;
+}
+//home page
 .carousel {
   border: solid $warning;
   border-width: 1px 0px 1px 0px;
@@ -50,6 +59,60 @@ img {
     }
     .carousel-item-container > * {
       flex: 1;
+    }
+  }
+  @media (max-width: 1068px) {
+    .carousel-control-next,
+    .carousel-control-prev {
+      top: 90%;
+    }
+    .carousel-item-container {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.filter_icon-container {
+  gap: 40px;
+  i {
+    font-size: 3.5rem;
+    color: $primary;
+  }
+}
+
+.cards-container {
+  .card {
+    max-width: 660px;
+    min-height: 355px;
+
+    @media (max-width: 560px) {
+      max-width: 350px;
+    }
+
+    img {
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+  .card > * {
+    flex: 1;
+  }
+}
+
+//footer
+footer {
+  p,
+  a {
+    margin-bottom: 5px;
+  }
+
+  @media (max-width: 560px) {
+    .logo-container {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    div {
+      justify-content: center;
     }
   }
 }
