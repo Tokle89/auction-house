@@ -1,0 +1,25 @@
+.listing-details_container {
+  > * {
+    flex: 1;
+  }
+
+  div {
+    max-width: 580px;
+  }
+  img {
+    max-height: 280px;
+  }
+
+  .time-container {
+    width: 105px;
+    height: 105px;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .profile-avatar {
+    max-width: 86px;
+  }
+}

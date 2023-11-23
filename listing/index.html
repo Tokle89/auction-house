@@ -7,7 +7,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
     />
-    <script type="module" src="./src/js/index.js"></script>
+    <script type="module" src="../src/js/index.js"></script>
     <title>Bootstrap w/ Vite</title>
   </head>
   <body>
@@ -41,7 +41,7 @@
             >
               <ul class="d-md-none list-unstyled m-0">
                 <li class="p-2 py-3 nav-border">
-                  <a href="./" class="fs-3 nav-link">Home</a>
+                  <a href="../" class="fs-3 nav-link">Home</a>
                 </li>
                 <li class="px-2 py-3 nav-border">
                   <button
@@ -188,128 +188,99 @@
 
       <section>
         <div
-          id="carouselExampleDark"
-          class="carousel carousel-dark slide bg-white py-5"
+          class="container listing-details_container d-flex justify-content-between"
         >
-          <div class="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#carouselExampleDark"
-              data-bs-slide-to="0"
-              class="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleDark"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleDark"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="10000">
-              <div class="w-100 d-flex justify-content-center">
-                <div
-                  class="carousel-item-container d-flex p-2 flex-column flex-md-row"
-                >
-                  <img
-                    src="./public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
-                    alt=""
-                  />
-                  <div class="ps-4 py-2 content-container">
-                    <h1>Art Painting nr10</h1>
-                    <p class="text-dark">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Enim maxime magnam adipisci nemo sequi! Fugit, rem
-                      deserunt.
-                    </p>
-                    <p class="fw-bold">Bidding end: 13.11.2013</p>
-                    <p class="fw-bold">
-                      Current bid: <span class="text-danger fw-bold">200$</span>
-                    </p>
-                    <a href="./listing/" class="btn btn-secondary text-white"
-                      >View</a
-                    >
-                  </div>
-                </div>
+          <div class="listing-content">
+            <div class="img-container">
+              <img
+                src="../public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
+                alt=""
+                class="p-2"
+              />
+              <div class="d-flex">
+                <img
+                  src="../public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
+                  alt=""
+                  class="p-2"
+                />
+                <img
+                  src="../public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
+                  alt=""
+                  class="p-2"
+                />
+                <img
+                  src="../public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
+                  alt=""
+                  class="p-2"
+                />
               </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-              <div class="w-100 d-flex justify-content-center">
-                <div class="carousel-item-container d-flex p-2">
-                  <img
-                    src="./public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
-                    alt=""
-                  />
-                  <div class="ps-4 content-container">
-                    <h1>Art Painting nr20</h1>
-                    <p class="text-dark">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Enim maxime magnam adipisci nemo sequi! Fugit, rem
-                      deserunt.
-                    </p>
-                    <p class="fw-bold">Bidding end: 13.11.2013</p>
-                    <p class="fw-bold">
-                      Current bid: <span class="text-danger fw-bold">200$</span>
-                    </p>
-                    <a href="./listing/" class="btn btn-secondary text-white"
-                      >View</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="w-100 d-flex justify-content-center">
-                <div class="carousel-item-container d-flex p-2">
-                  <img
-                    src="./public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
-                    alt=""
-                  />
-                  <div class="ps-4 content-container">
-                    <h1>Art Painting nr30</h1>
-                    <p class="text-dark">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Enim maxime magnam adipisci nemo sequi! Fugit, rem
-                      deserunt.
-                    </p>
-                    <p class="fw-bold">Bidding end: 13.11.2013</p>
-                    <p class="fw-bold">
-                      Current bid: <span class="text-danger fw-bold">200$</span>
-                    </p>
-                    <a href="./listing/" class="btn btn-secondary text-white"
-                      >View</a
-                    >
-                  </div>
-                </div>
+              <div class="text-container p-2">
+                <h1>Art Painting nr2</h1>
+                <p class="text-dark">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+                  maxime magnam adipisci nemo sequi! Fugit, rem deserunt.
+                </p>
               </div>
             </div>
           </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleDark"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleDark"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+          <div class="listing-info">
+            <h2 class="fw-bold mb-3">Time remaining:</h2>
+            <div class="d-flex justify-content-between">
+              <div
+                class="bg-danger text-white time-container text-center fw-bold d-flex flex-column align-items-center justify-content-center fs-5"
+              >
+                <p>3</p>
+                <p>Days</p>
+              </div>
+              <div
+                class="bg-danger text-white time-container text-center fw-bold d-flex flex-column align-items-center justify-content-center fs-5"
+              >
+                <p>22</p>
+                <p>Hours</p>
+              </div>
+              <div
+                class="bg-danger text-white time-container text-center fw-bold d-flex flex-column align-items-center justify-content-center fs-5"
+              >
+                <p>15</p>
+                <p>Minutes</p>
+              </div>
+              <div
+                class="bg-danger text-white time-container text-center fw-bold d-flex flex-column align-items-center justify-content-center fs-5"
+              >
+                <p>12</p>
+                <p>Seconds</p>
+              </div>
+            </div>
+            <div class="mt-5 border border-warning p-3">
+              <div class="profile-info d-flex align-items-center mb-3">
+                <img
+                  src="../public/images/profile.jpg"
+                  class="profile-avatar rounded-circle"
+                  alt=""
+                />
+                <div class="ps-4">
+                  <h3 class="fs-5 fw-bold">Sellers Name</h3>
+                  <p class="text-dark mb-2">Sellers@mail.com</p>
+                  <p
+                    class="text-primary text-underline mb-0 fw-bold text-decoration-underline"
+                  >
+                    Listings: 5
+                  </p>
+                </div>
+              </div>
+              <p class="text-dark text-decoration-underline">
+                Started: 11.12.2023
+              </p>
+              <p class="fw-bold">Current bid:</p>
+              <div class="d-flex justify-content-between align-items-end">
+                <div class="d-flex">
+                  <p>Amount <span class="text-danger fw-bold">200$</span></p>
+                  <p class="ms-3">By: Anon</p>
+                </div>
+                <p class="fw-bold text-secondary fs-5">Funds: 1000$</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section>
@@ -350,7 +321,7 @@
               >
                 <div class="img-container">
                   <img
-                    src="./public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
+                    src="../public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
                     alt=""
                   />
                 </div>
@@ -363,9 +334,7 @@
                     <p class="card-text fw-bold">
                       Current bid: <span class="text-danger"> 200$</span>
                     </p>
-                    <a href="./listing/" class="btn btn-secondary text-white"
-                      >View</a
-                    >
+                    <button class="btn btn-secondary text-white">View</button>
                   </div>
                 </div>
               </div>
@@ -376,7 +345,7 @@
               >
                 <div class="img-container">
                   <img
-                    src="./public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
+                    src="../public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
                     alt=""
                   />
                 </div>
@@ -389,9 +358,7 @@
                     <p class="card-text fw-bold">
                       Current bid: <span class="text-danger"> 200$</span>
                     </p>
-                    <a href="./listing/" class="btn btn-secondary text-white"
-                      >View</a
-                    >
+                    <button class="btn btn-secondary text-white">View</button>
                   </div>
                 </div>
               </div>
@@ -404,7 +371,7 @@
               >
                 <div class="img-container">
                   <img
-                    src="./public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
+                    src="../public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
                     alt=""
                   />
                 </div>
@@ -417,9 +384,7 @@
                     <p class="card-text fw-bold">
                       Current bid: <span class="text-danger"> 200$</span>
                     </p>
-                    <a href="./listing/" class="btn btn-secondary text-white"
-                      >View</a
-                    >
+                    <button class="btn btn-secondary text-white">View</button>
                   </div>
                 </div>
               </div>
@@ -430,7 +395,7 @@
               >
                 <div class="img-container">
                   <img
-                    src="./public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
+                    src="../public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
                     alt=""
                   />
                 </div>
@@ -443,9 +408,7 @@
                     <p class="card-text fw-bold">
                       Current bid: <span class="text-danger"> 200$</span>
                     </p>
-                    <a href="./listing/" class="btn btn-secondary text-white"
-                      >View</a
-                    >
+                    <button class="btn btn-secondary text-white">View</button>
                   </div>
                 </div>
               </div>
