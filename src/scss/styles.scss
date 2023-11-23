@@ -84,7 +84,11 @@ a {
 .cards-container {
   .card {
     max-width: 660px;
-    min-height: 355px;
+    min-height: 300px;
+
+    .card-body {
+      padding: 0px;
+    }
 
     @media (max-width: 560px) {
       max-width: 350px;
@@ -116,4 +120,16 @@ footer {
       justify-content: center;
     }
   }
+}
+
+//modal
+// .modal-content {
+//   border-width: 5px;
+// }
+.listing-modal_btn {
+  all: unset;
+}
+
+.listing-modal_btn:focus {
+  outline: revert;
 }
