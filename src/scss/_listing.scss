@@ -2,24 +2,38 @@
   > * {
     flex: 1;
   }
-
+  gap: 40px;
   div {
     max-width: 580px;
   }
   img {
     max-height: 280px;
+    cursor: pointer;
   }
 
-  .time-container {
-    width: 105px;
-    height: 105px;
+  .time-remaining-container {
+    gap: 10px;
 
-    p {
-      margin: 0;
+    .time-container {
+      width: 105px;
+      height: 105px;
+
+      font-size: large;
+      @media (max-width: 500px) {
+        width: 90px;
+        height: 75px;
+      }
+      p {
+        margin: 0;
+      }
     }
   }
 
   .profile-avatar {
     max-width: 86px;
+  }
+
+  input {
+    border: 1px solid $warning;
   }
 }

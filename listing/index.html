@@ -17,7 +17,7 @@
           <div class="container-fluid pt-2 px-0">
             <a
               class="navbar-brand fs-2 ps-3 pe-0 py-2 logo text-uppercase"
-              href="./"
+              href="../"
               ><span class="text-secondary">A</span>uction<span
                 class="text-secondary"
               >
@@ -188,9 +188,9 @@
 
       <section>
         <div
-          class="container listing-details_container d-flex justify-content-between"
+          class="container listing-details_container d-flex flex-lg-row flex-column"
         >
-          <div class="listing-content">
+          <div class="listing-content container">
             <div class="img-container">
               <img
                 src="../public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
@@ -223,36 +223,38 @@
               </div>
             </div>
           </div>
-          <div class="listing-info">
+          <div class="listing-info container">
             <h2 class="fw-bold mb-3">Time remaining:</h2>
-            <div class="d-flex justify-content-between">
+            <div
+              class="d-flex justify-content-between time-remaining-container"
+            >
               <div
-                class="bg-danger text-white time-container text-center fw-bold d-flex flex-column align-items-center justify-content-center fs-5"
+                class="bg-danger text-white time-container text-center fw-bold d-flex flex-column align-items-center justify-content-center"
               >
                 <p>3</p>
                 <p>Days</p>
               </div>
               <div
-                class="bg-danger text-white time-container text-center fw-bold d-flex flex-column align-items-center justify-content-center fs-5"
+                class="bg-danger text-white time-container text-center fw-bold d-flex flex-column align-items-center justify-content-center"
               >
                 <p>22</p>
                 <p>Hours</p>
               </div>
               <div
-                class="bg-danger text-white time-container text-center fw-bold d-flex flex-column align-items-center justify-content-center fs-5"
+                class="bg-danger text-white time-container text-center fw-bold d-flex flex-column align-items-center justify-content-center"
               >
                 <p>15</p>
-                <p>Minutes</p>
+                <p>Min</p>
               </div>
               <div
-                class="bg-danger text-white time-container text-center fw-bold d-flex flex-column align-items-center justify-content-center fs-5"
+                class="bg-danger text-white time-container text-center fw-bold d-flex flex-column align-items-center justify-content-center"
               >
                 <p>12</p>
-                <p>Seconds</p>
+                <p>Sec</p>
               </div>
             </div>
-            <div class="mt-5 border border-warning p-3">
-              <div class="profile-info d-flex align-items-center mb-3">
+            <div class="mt-5 border border-warning p-3 bg-white">
+              <div class="profile-info d-flex align-items-center">
                 <img
                   src="../public/images/profile.jpg"
                   class="profile-avatar rounded-circle"
@@ -261,23 +263,39 @@
                 <div class="ps-4">
                   <h3 class="fs-5 fw-bold">Sellers Name</h3>
                   <p class="text-dark mb-2">Sellers@mail.com</p>
-                  <p
+                  <a
+                    href="#"
                     class="text-primary text-underline mb-0 fw-bold text-decoration-underline"
+                    >Listings: 5</a
                   >
-                    Listings: 5
-                  </p>
                 </div>
               </div>
-              <p class="text-dark text-decoration-underline">
-                Started: 11.12.2023
-              </p>
-              <p class="fw-bold">Current bid:</p>
-              <div class="d-flex justify-content-between align-items-end">
-                <div class="d-flex">
-                  <p>Amount <span class="text-danger fw-bold">200$</span></p>
-                  <p class="ms-3">By: Anon</p>
+              <div class="border-bottom border-secondary my-3"></div>
+              <div class="fw-bold">
+                <p class="text-decoration-underline">Started: 11.12.2023</p>
+                <p class="mb-0">Current bid:</p>
+                <div
+                  class="d-flex justify-content-between align-items-start align-items-sm-end flex-column flex-sm-row"
+                >
+                  <div class="d-flex">
+                    <p>Amount <span class="text-danger">200$</span></p>
+                    <p class="ms-3">By: Anon</p>
+                  </div>
+                  <p class="text-secondary fs-5">Funds: 1000$</p>
                 </div>
-                <p class="fw-bold text-secondary fs-5">Funds: 1000$</p>
+                <form action="post" class="d-flex flex-column flex-sm-row">
+                  <input
+                    type="text"
+                    class="form-control mb-4"
+                    id="bid"
+                    placeholder="Enter amount"
+                    required
+                  />
+                  <button class="btn btn-secondary text white mb-4">Bid</button>
+                </form>
+                <button class="btn btn border-primary text-primary">
+                  View all bids
+                </button>
               </div>
             </div>
           </div>
@@ -328,8 +346,8 @@
                 <div
                   class="card-body d-flex flex-column align-items-center justify-content-center"
                 >
-                  <div class="text-start">
-                    <h2 class="card-title">Art Painting nr2</h2>
+                  <div class="text-start m-3">
+                    <h2 class="card-title fs-3">Art Painting nr2</h2>
                     <p class="card-text fw-bold">bidding end: 21.02.2023</p>
                     <p class="card-text fw-bold">
                       Current bid: <span class="text-danger"> 200$</span>
@@ -352,34 +370,8 @@
                 <div
                   class="card-body d-flex flex-column align-items-center justify-content-center"
                 >
-                  <div class="text-start">
-                    <h2 class="card-title">Art Painting nr2</h2>
-                    <p class="card-text fw-bold">bidding end: 21.02.2023</p>
-                    <p class="card-text fw-bold">
-                      Current bid: <span class="text-danger"> 200$</span>
-                    </p>
-                    <button class="btn btn-secondary text-white">View</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cards-container row row-cols-1 row-cols-sm-2">
-            <div class="col py-4 d-flex justify-content-center">
-              <div
-                class="card d-flex flex-column flex-lg-row border border-warning"
-              >
-                <div class="img-container">
-                  <img
-                    src="../public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
-                    alt=""
-                  />
-                </div>
-                <div
-                  class="card-body d-flex flex-column align-items-center justify-content-center"
-                >
-                  <div class="text-start">
-                    <h2 class="card-title">Art Painting nr2</h2>
+                  <div class="text-start m-3">
+                    <h2 class="card-title fs-3">Art Painting nr2</h2>
                     <p class="card-text fw-bold">bidding end: 21.02.2023</p>
                     <p class="card-text fw-bold">
                       Current bid: <span class="text-danger"> 200$</span>
@@ -402,8 +394,32 @@
                 <div
                   class="card-body d-flex flex-column align-items-center justify-content-center"
                 >
-                  <div class="text-start">
-                    <h2 class="card-title">Art Painting nr2</h2>
+                  <div class="text-start m-3">
+                    <h2 class="card-title fs-3">Art Painting nr2</h2>
+                    <p class="card-text fw-bold">bidding end: 21.02.2023</p>
+                    <p class="card-text fw-bold">
+                      Current bid: <span class="text-danger"> 200$</span>
+                    </p>
+                    <button class="btn btn-secondary text-white">View</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col py-4 d-flex justify-content-center">
+              <div
+                class="card d-flex flex-column flex-lg-row border border-warning"
+              >
+                <div class="img-container">
+                  <img
+                    src="../public/images/brooklyn-MO5qO9xpZhA-unsplash.jpg"
+                    alt=""
+                  />
+                </div>
+                <div
+                  class="card-body d-flex flex-column align-items-center justify-content-center"
+                >
+                  <div class="text-start m-3">
+                    <h2 class="card-title fs-3">Art Painting nr2</h2>
                     <p class="card-text fw-bold">bidding end: 21.02.2023</p>
                     <p class="card-text fw-bold">
                       Current bid: <span class="text-danger"> 200$</span>
