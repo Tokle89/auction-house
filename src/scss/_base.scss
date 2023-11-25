@@ -16,7 +16,8 @@
   color: $primary;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+.current-btn {
   background: #fff;
   color: $secondary;
 }

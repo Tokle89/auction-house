@@ -37,11 +37,6 @@ body {
   grid-template-columns: 100%;
 }
 
-.current {
-  text-decoration: underline;
-  color: $secondary;
-}
-
 img {
   width: 100%;
   object-fit: cover;
@@ -125,4 +120,8 @@ footer {
 
 .listing-modal_btn:focus {
   outline: revert;
+}
+
+.profile-avatar {
+  max-width: 86px;
 }
