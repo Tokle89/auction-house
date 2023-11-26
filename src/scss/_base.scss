@@ -1,3 +1,45 @@
 .btn {
   min-width: 129px;
 }
+.btn-white {
+  background-color: #fff;
+  color: $primary;
+}
+.btn:hover {
+  transition: all ease-in 0.1s;
+}
+.btn-secondary {
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #fff;
+  color: $primary;
+}
+
+.btn-secondary:hover,
+.current-btn {
+  background: #fff;
+  color: $secondary;
+}
+
+.btn-white:hover {
+  background: $primary;
+  color: #fff;
+}
+
+.text-link:hover {
+  font-weight: bold;
+  font-size: large;
+  transition: all ease-in 0.1s;
+}
+
+li {
+  min-height: 64px;
+}
+
+.filter-btn {
+  border: 1px solid $warning;
+  @media (max-width: 450px) {
+    min-width: 0px;
+  }
+}

@@ -1,0 +1,38 @@
+.listing-details_container {
+  > * {
+    flex: 1;
+  }
+  gap: 40px;
+  div {
+    max-width: 580px;
+  }
+  img {
+    max-height: 280px;
+    cursor: pointer;
+  }
+
+  .time-remaining-container {
+    gap: 10px;
+
+    .time-container {
+      width: 90px;
+      height: 90px;
+
+      @media (max-width: 500px) {
+        width: 90px;
+        height: 75px;
+      }
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .profile-avatar {
+    max-width: 86px;
+  }
+
+  input {
+    border: 1px solid $warning;
+  }
+}

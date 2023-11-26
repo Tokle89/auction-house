@@ -2,6 +2,8 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "typography";
 @import "base";
+@import "auth";
+@import "listing";
 
 //header
 .header-container {
@@ -33,11 +35,6 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
-}
-
-.current {
-  text-decoration: underline;
-  color: $secondary;
 }
 
 img {
@@ -72,18 +69,14 @@ a {
   }
 }
 
-.filter_icon-container {
-  gap: 40px;
-  i {
-    font-size: 3.5rem;
-    color: $primary;
-  }
-}
-
 .cards-container {
   .card {
     max-width: 660px;
-    min-height: 355px;
+    min-height: 300px;
+
+    .card-body {
+      padding: 0px;
+    }
 
     @media (max-width: 560px) {
       max-width: 350px;
@@ -115,4 +108,20 @@ footer {
       justify-content: center;
     }
   }
+}
+
+//modal
+// .modal-content {
+//   border-width: 5px;
+// }
+.listing-modal_btn {
+  all: unset;
+}
+
+.listing-modal_btn:focus {
+  outline: revert;
+}
+
+.profile-avatar {
+  max-width: 86px;
 }
