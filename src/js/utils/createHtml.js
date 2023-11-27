@@ -12,7 +12,8 @@ export const createElement = (
   if (Array.isArray(classes)) {
     element.classList.add(...classes);
   }
-  if (Array.isArray(children && children.length)) {
+
+  if (Array.isArray(children) && children.length) {
     element.append(...children);
   }
 
