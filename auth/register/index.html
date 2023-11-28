@@ -194,7 +194,7 @@
           </p>
         </div>
 
-        <form class="mx-auto my-5">
+        <form class="mx-auto my-5" id="register-form">
           <div class="mb-3">
             <label for="username" class="form-label">UserName</label>
             <input
@@ -214,9 +214,9 @@
               type="email"
               class="form-control"
               id="email"
-              maxlength="20"
               placeholder="Email must be an @noroff.no or @stud.noroff.no address"
-              pattern="pattern: ^[\w\-.]+@(stud\.)?noroff\.no$"
+              pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+              required
             />
           </div>
           <div class="mb-3">
@@ -239,12 +239,7 @@
               placeholder="Must be a valid url link"
             />
           </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="remember-me" />
-            <label class="form-check-label" for="remember-me"
-              >Remember me</label
-            >
-          </div>
+
           <button type="submit" class="btn btn-primary">Register</button>
         </form>
       </section>

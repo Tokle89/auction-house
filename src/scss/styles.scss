@@ -64,8 +64,7 @@ a {
       width: 358px;
 
       @media (max-width: 560px) {
-        max-height: 250px;
-        min-height: 250px;
+        height: 250px;
         width: 100%;
       }
     }
