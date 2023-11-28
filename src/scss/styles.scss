@@ -9,9 +9,10 @@
 .header-container {
   max-width: 1320px;
 
-  .btn {
-    min-width: 160px;
-  }
+  // .btn {
+  //   min-width: 160px;
+  //   max-width: 200px;
+  // }
 }
 
 .nav-border {
@@ -56,6 +57,17 @@ a {
     }
     .carousel-item-container > * {
       flex: 1;
+    }
+
+    img {
+      height: 358px;
+      width: 358px;
+
+      @media (max-width: 560px) {
+        max-height: 250px;
+        min-height: 250px;
+        width: 100%;
+      }
     }
   }
   @media (max-width: 1068px) {

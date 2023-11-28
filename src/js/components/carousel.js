@@ -32,7 +32,7 @@ export const createCarouselCard = ({
 const createCarouselCardImg = (media, title) => {
   const element = createElement(
     "img",
-    ["d-block", "w-100"],
+    ["d-block"],
     undefined,
     undefined,
     undefined,
@@ -43,7 +43,13 @@ const createCarouselCardImg = (media, title) => {
 };
 
 const createTextContainer = (title, endsAt, bids, description) => {
-  const element = createElement("div", ["p-4", "content-container"]);
+  const element = createElement("div", [
+    "p-4",
+    "content-container",
+    "d-flex",
+    "flex-column",
+    "justify-content-md-center",
+  ]);
   const h1 = createElement("h1", undefined, null, title);
   const paragraph = createElement(
     "p",
@@ -70,6 +76,11 @@ const createTextContainer = (title, endsAt, bids, description) => {
 
   const link = createElement("a", ["btn", "btn-secondary"], undefined, "View");
 
-  element.append(h1, paragraph, paragraph2, paragraph3, link);
+  const container = createElement(
+    "div",
+    ["m-auto"],
+    [h1, paragraph, paragraph2, paragraph3, link],
+  );
+  element.append(container);
   return element;
 };
