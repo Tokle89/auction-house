@@ -1,6 +1,7 @@
 import { apiCall } from "../api/api.js";
 import { createListingCard } from "../components/listingCards.js";
 import { createCarouselCard } from "../components/carousel.js";
+import { fetchPopularListings } from "../utils/filter.js";
 
 export const renderCards = (url) => {
   const cardsContainer = document.querySelector(".cards-container");
@@ -18,27 +19,20 @@ export const renderCards = (url) => {
     });
 };
 
-export const renderCarousel = (url) => {
+export const renderCarousel = () => {
   const carouselContainer = document.querySelector(".carousel-inner");
   carouselContainer.innerHTML = "";
 
-  apiCall(url)
-    .then((listings) => {
-      const highestBids = listings
-        .filter(({ bids }) => bids.length > 0)
-        .sort((a, b) => b.bids[0].amount - a.bids[0].amount);
+  fetchPopularListings().then((popularListings) => {
+    popularListings.forEach((listing, i) => {
+      if (i < 3) {
+        const carouselCard = createCarouselCard(listing);
 
-      highestBids.forEach((listing, i) => {
-        if (i < 3) {
-          const carouselCard = createCarouselCard(listing);
-          if (listing === highestBids[0]) {
-            carouselCard.classList.add("active");
-          }
-          carouselContainer.append(carouselCard);
+        if (listing === popularListings[0]) {
+          carouselCard.classList.add("active");
         }
-      });
-    })
-    .catch((error) => {
-      console.log(error);
+        carouselContainer.append(carouselCard);
+      }
     });
+  });
 };
