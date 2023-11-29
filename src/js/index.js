@@ -3,37 +3,34 @@ import "../scss/styles.scss";
 import * as bootstrap from "bootstrap";
 import { renderCards } from "./render/render.js";
 import { renderCarousel } from "./render/render.js";
-
 import * as url from "./api/constant.js";
-
 import { handleRegister } from "./auth/register.js";
+import { displayRegisteredMsg } from "./components/userMsgs.js";
+import { handleLogin } from "./auth/login.js";
+import { loginCredentials } from "./auth/login.js";
 
 const registerForm = document.getElementById("register-form");
+const loginForm = document.getElementById("login-form");
 
 export const router = () => {
   const href = location.href;
+
   if (href.includes("register")) {
     registerForm.addEventListener("submit", handleRegister);
   } else if (href.includes("login")) {
-    console.log("login");
     displayRegisteredMsg();
+    loginForm.addEventListener("submit", handleLogin);
+    loginCredentials();
+  } else if (href.includes("profile")) {
+    console.log("profile");
   } else {
     renderCards(url.BASE + url.LISTINGS + url.listingsParams);
     renderCarousel();
   }
 };
 
-const loginParagraph = document.getElementById("login-paragraph");
-
-export const displayRegisteredMsg = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const isRegistered = urlParams.get("registration");
-
-  if (isRegistered) {
-    loginParagraph.innerText =
-      "You have successfully registered. Please login to continue.";
-    loginParagraph.classList.add("text-secondary");
-  }
-};
-
 router();
+
+const authBtns = document.getElementById("auth-btns");
+
+authBtns.classList.add("d-none");

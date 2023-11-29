@@ -3,10 +3,7 @@ export const apiCall = async (url, fetchOptions) => {
     const response = await fetch(url, fetchOptions);
     const result = await response.json();
 
-    console.log(result);
-    if (response.ok) {
-      return result;
-    } else return response;
+    return result;
   } catch (error) {
     console.log(error);
   }

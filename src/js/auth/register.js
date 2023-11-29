@@ -25,10 +25,11 @@ const registerUser = (username, email, password, avatar) => {
 
   apiCall(url.BASE + url.REGISTER, fetchOptions)
     .then((result) => {
-      console.log(result);
-    })
-    .then(() => {
-      window.location.replace("../../../auth/login/?registration=true");
+      if (result.errors) {
+        alert(result.errors[0].msg);
+      } else {
+        window.location.replace("../../../auth/login/?registration=true");
+      }
     })
     .catch((error) => {
       console.log(error);

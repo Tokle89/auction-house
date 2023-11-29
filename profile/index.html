@@ -40,11 +40,11 @@
               <span class="navbar-toggler-icon fs-2"></span>
             </button>
             <div
-              class="navbar-collapse align-content-stretch collapse show nav-border"
+              class="navbar-collapse align-content-stretch collapse show"
               id="navbarSupportedContent"
             >
               <ul class="d-md-none list-unstyled m-0 text-secondary">
-                <li class="p-2 py-3 nav-border">
+                <li class="p-2 py-3 border-top border-warning">
                   <a href="../" class="nav-link text-link">Home</a>
                 </li>
                 <li class="px-2 py-3 nav-border">
@@ -59,8 +59,57 @@
                   </button>
                 </li>
               </ul>
+              <div class="d-flex ms-md-auto p-3">
+                <div class="dropdown text-end profile-btn">
+                  <button
+                    class="listing-modal_btn d-block dropdown-toggle show"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="true"
+                  >
+                    <img
+                      src="https://github.com/mdo.png"
+                      alt="mdo"
+                      class="rounded-circle"
+                    />
+                  </button>
+
+                  <ul
+                    class="dropdown-menu dropdown-menu-start dropdown-menu-md-end show text-secondary m-0 border border-warning"
+                    data-popper-placement="bottom-start"
+                  >
+                    <li>
+                      <button
+                        type="button"
+                        class="listing-modal_btn text-link py-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#add-listing-modal"
+                      >
+                        <span class="text-primary fw-bold px-2">+</span>Add
+                        listing
+                      </button>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a
+                        class="dropdown-item text-link p-2 text-secondary"
+                        href="./"
+                        >Profile</a
+                      >
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <button
+                        class="dropdown-item listing-modal_btn text-link text-secondary p-2"
+                      >
+                        Sign Out
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <div
-                class="ms-md-auto justify-content-between justify-content-between-md-end d-flex nav-border px-2 py-3"
+                class="ms-md-auto justify-content-between d-flex px-2 py-3"
+                id="auth-btns"
               >
                 <a
                   href="../auth/login/"
@@ -205,11 +254,7 @@
           <div class="ps-4">
             <h3 class="fs-5 fw-bold mb-0">Sellers Name</h3>
             <p class="text-dark">Sellers@mail.com</p>
-            <a
-              href="#"
-              class="text-primary text-underline mb-0 fw-bold text-decoration-underline"
-              >Listings: 5</a
-            >
+            <p class="fw-bold text-secondary mb-0">Credits:</p>
           </div>
         </div>
       </section>
