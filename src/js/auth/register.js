@@ -28,7 +28,7 @@ const registerUser = (username, email, password, avatar) => {
       console.log(result);
     })
     .then(() => {
-      window.location.replace("../../../auth/login/");
+      window.location.replace("../../../auth/login/?registration=true");
     })
     .catch((error) => {
       console.log(error);

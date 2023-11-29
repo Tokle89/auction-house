@@ -23,8 +23,6 @@ export const fetchPopularListings = async () => {
   return PopularListings;
 };
 
-fetchPopularListings();
-
 const sortListingsByBids = (listings) => {
   const sortedListings = listings.filter(({ bids }) => bids.length > 0);
 
