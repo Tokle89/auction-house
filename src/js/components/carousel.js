@@ -1,4 +1,4 @@
-import { createElement } from "../utils/createHtml.js";
+import { createElement } from "../utils/createElement.js";
 import { parseDate } from "../utils/parse.js";
 import { checkMedia } from "../utils/media.js";
 
@@ -74,7 +74,13 @@ const createTextContainer = (title, endsAt, bids, description) => {
   );
   const paragraph3 = createElement("p", undefined, ["Current bid:", span]);
 
-  const link = createElement("a", ["btn", "btn-secondary"], undefined, "View");
+  const link = createElement(
+    "a",
+    ["btn", "btn-secondary"],
+    undefined,
+    "View",
+    `./listing/index.html?id=${title}`,
+  );
 
   const container = createElement(
     "div",

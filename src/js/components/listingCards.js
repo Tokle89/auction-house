@@ -1,4 +1,4 @@
-import { createElement } from "../utils/createHtml.js";
+import { createElement } from "../utils/createElement.js";
 import { parseDate } from "../utils/parse.js";
 import { checkMedia } from "../utils/media.js";
 
@@ -86,6 +86,7 @@ const cardBody = (title, endsAt, bids) => {
     ["btn", "btn-secondary", "mt-1"],
     undefined,
     "View",
+    `./listing/index.html?id=${title}`,
   );
 
   const textContainer = createElement(
