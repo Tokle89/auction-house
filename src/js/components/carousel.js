@@ -3,6 +3,7 @@ import { parseDate } from "../utils/parse.js";
 import { checkMedia } from "../utils/media.js";
 
 export const createCarouselCard = ({
+  id,
   title,
   endsAt,
   bids,
@@ -12,7 +13,13 @@ export const createCarouselCard = ({
   const element = createElement("div", ["carousel-item"]);
 
   const img = createCarouselCardImg(media, title);
-  const textContainer = createTextContainer(title, endsAt, bids, description);
+  const textContainer = createTextContainer(
+    id,
+    title,
+    endsAt,
+    bids,
+    description,
+  );
 
   const carouselItemContainer = createElement(
     "div",
@@ -42,7 +49,7 @@ const createCarouselCardImg = (media, title) => {
   return element;
 };
 
-const createTextContainer = (title, endsAt, bids, description) => {
+const createTextContainer = (id, title, endsAt, bids, description) => {
   const element = createElement("div", [
     "p-4",
     "content-container",
@@ -79,7 +86,7 @@ const createTextContainer = (title, endsAt, bids, description) => {
     ["btn", "btn-secondary"],
     undefined,
     "View",
-    `./listing/index.html?id=${title}`,
+    `./listing/index.html?id=${id}`,
   );
 
   const container = createElement(

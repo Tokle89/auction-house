@@ -2,7 +2,7 @@ import { createElement } from "../utils/createElement.js";
 import { parseDate } from "../utils/parse.js";
 import { checkMedia } from "../utils/media.js";
 
-export const createListingCard = ({ title, bids, endsAt, media }) => {
+export const createListingCard = ({ id, title, bids, endsAt, media }) => {
   const element = createElement("div", [
     "col",
     "py-4",
@@ -11,7 +11,7 @@ export const createListingCard = ({ title, bids, endsAt, media }) => {
   ]);
 
   const image = imgContainer(media, title);
-  const cardBodyElement = cardBody(title, endsAt, bids);
+  const cardBodyElement = cardBody(id, title, endsAt, bids);
   const card = createElement(
     "div",
     [
@@ -47,7 +47,7 @@ const imgContainer = (media, title) => {
   return element;
 };
 
-const cardBody = (title, endsAt, bids) => {
+const cardBody = (id, title, endsAt, bids) => {
   const element = createElement("div", [
     "card-body",
     "d-flex",
@@ -86,7 +86,7 @@ const cardBody = (title, endsAt, bids) => {
     ["btn", "btn-secondary", "mt-1"],
     undefined,
     "View",
-    `./listing/index.html?id=${title}`,
+    `./listing/index.html?id=${id}`,
   );
 
   const textContainer = createElement(

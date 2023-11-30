@@ -1,15 +1,14 @@
 import "../scss/styles.scss";
 // eslint-disable-next-line no-unused-vars
 import * as bootstrap from "bootstrap";
-import { renderCards } from "./render/render.js";
-import { renderCarousel } from "./render/render.js";
+import { renderCards, renderCarousel, renderListing } from "./render/render.js";
 import * as url from "./api/constant.js";
 import { handleRegister } from "./auth/register.js";
 import { displayRegisteredMsg } from "./components/userMsgs.js";
-import { handleLogin } from "./auth/login.js";
-import { loginCredentials } from "./auth/login.js";
+import { handleLogin, loginCredentials } from "./auth/login.js";
 import { toggleHeaderBtns } from "./utils/toggle.js";
 import { handleLogout } from "./auth/logout.js";
+import { getQueryParamId } from "./utils/queryParam.js";
 
 const registerForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
@@ -26,6 +25,10 @@ export const router = () => {
     loginCredentials();
   } else if (href.includes("profile")) {
     console.log("profile");
+  } else if (href.includes("listing")) {
+    const id = getQueryParamId();
+    console.log(id);
+    renderListing(url.BASE + url.LISTINGS + `/${id}` + url.listingsParams);
   } else {
     renderCards(url.BASE + url.LISTINGS + url.listingsParams);
     renderCarousel();

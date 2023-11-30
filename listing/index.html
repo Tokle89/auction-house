@@ -59,8 +59,59 @@
                   </button>
                 </li>
               </ul>
+              <div class="d-flex ms-md-auto p-3">
+                <div class="dropdown text-end profile-btn">
+                  <button
+                    class="listing-modal_btn d-block dropdown-toggle show"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="true"
+                  >
+                    <img
+                      src="https://github.com/mdo.png"
+                      alt="mdo"
+                      class="rounded-circle"
+                      id="profile-btn-img"
+                    />
+                  </button>
+
+                  <ul
+                    class="dropdown-menu dropdown-menu-start dropdown-menu-md-end text-secondary m-0 border border-warning"
+                    data-popper-placement="bottom-start"
+                  >
+                    <li>
+                      <button
+                        type="button"
+                        class="listing-modal_btn text-link py-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#add-listing-modal"
+                      >
+                        <span class="text-primary fw-bold px-2">+</span>Add
+                        listing
+                      </button>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a
+                        class="dropdown-item text-link p-2 text-secondary"
+                        href="./profile/"
+                        >Profile</a
+                      >
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <button
+                        class="dropdown-item listing-modal_btn text-link text-secondary p-2"
+                        id="logout-btn"
+                      >
+                        Sign Out
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <div
-                class="ms-md-auto justify-content-between justify-content-between-md-end d-flex nav-border px-2 py-3"
+                class="ms-md-auto justify-content-between d-flex px-2 py-3"
+                id="auth-btns"
               >
                 <a
                   href="../auth/login/"
@@ -194,7 +245,7 @@
         </div>
       </div>
 
-      <section>
+      <section class="listing-section">
         <div
           class="container listing-details_container d-flex flex-lg-row flex-column"
         >

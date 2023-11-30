@@ -2,6 +2,7 @@ import { apiCall } from "../api/api.js";
 import { createListingCard } from "../components/listingCards.js";
 import { createCarouselCard } from "../components/carousel.js";
 import { fetchPopularListings } from "../utils/filter.js";
+import { createListing } from "../components/listing.js";
 
 export const renderCards = (url) => {
   const cardsContainer = document.querySelector(".cards-container");
@@ -32,4 +33,19 @@ export const renderCarousel = () => {
       }
     });
   });
+};
+
+export const renderListing = (url) => {
+  const container = document.querySelector(".listing-section");
+  console.log(container);
+  apiCall(url)
+    .then((listing) => {
+      console.log(listing);
+      createListing(listing);
+      // const listing = createListing(result);
+      // container.append(listing);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
