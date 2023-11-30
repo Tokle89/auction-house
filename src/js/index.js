@@ -8,9 +8,12 @@ import { handleRegister } from "./auth/register.js";
 import { displayRegisteredMsg } from "./components/userMsgs.js";
 import { handleLogin } from "./auth/login.js";
 import { loginCredentials } from "./auth/login.js";
+import { toggleHeaderBtns } from "./utils/toggle.js";
+import { handleLogout } from "./auth/logout.js";
 
 const registerForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
+const logoutBtn = document.getElementById("logout-btn");
 
 export const router = () => {
   const href = location.href;
@@ -31,6 +34,6 @@ export const router = () => {
 
 router();
 
-const authBtns = document.getElementById("auth-btns");
+toggleHeaderBtns();
 
-authBtns.classList.add("d-none");
+logoutBtn.addEventListener("click", handleLogout);
