@@ -39,11 +39,9 @@ export const renderListing = (url) => {
   const container = document.querySelector(".listing-section");
   console.log(container);
   apiCall(url)
-    .then((listing) => {
-      console.log(listing);
-      createListing(listing);
-      // const listing = createListing(result);
-      // container.append(listing);
+    .then((result) => {
+      const listing = createListing(result);
+      container.append(listing);
     })
     .catch((error) => {
       console.log(error);
