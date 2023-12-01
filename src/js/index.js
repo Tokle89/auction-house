@@ -27,7 +27,6 @@ export const router = () => {
     console.log("profile");
   } else if (href.includes("listing")) {
     const id = getQueryParamId();
-    console.log(id);
     renderListing(url.BASE + url.LISTINGS + `/${id}` + url.listingsParams);
   } else {
     renderCards(url.BASE + url.LISTINGS + url.listingsParams);

@@ -91,16 +91,15 @@ const createListingInfoContainer = (endsAt, seller, created, bids) => {
     "Time Remaining",
   );
 
-  const { days, hours, minutes, seconds } = countDownFunction(endsAt);
   const timeRemainingContainer = createElement("div", [
     "d-flex",
     "justify-content-evenly",
     "time-remaining-container",
   ]);
-  const dayContainer = createTimeContainer(days, "Days");
-  const hourContainer = createTimeContainer(hours, "Hours");
-  const minuteContainer = createTimeContainer(minutes, "Minutes");
-  const secondContainer = createTimeContainer(seconds, "Seconds");
+  const dayContainer = createTimeContainer("days-container", "Days");
+  const hourContainer = createTimeContainer("hours-container", "Hours");
+  const minuteContainer = createTimeContainer("min-container", "Minutes");
+  const secondContainer = createTimeContainer("sec-container", "Seconds");
   timeRemainingContainer.append(
     dayContainer,
     hourContainer,
@@ -111,6 +110,24 @@ const createListingInfoContainer = (endsAt, seller, created, bids) => {
   const bidInfoContainer = createBidInfoContainer(seller, created, bids);
   element.append(h2, timeRemainingContainer, bidInfoContainer);
 
+  return element;
+};
+
+const createTimeContainer = (className, text) => {
+  const element = createElement("div", [
+    "bg-danger",
+    "text-white",
+    "time-container",
+    "text-center",
+    "fw-bold",
+    "d-flex",
+    "flex-column",
+    "align-items-center",
+    "justify-content-center",
+  ]);
+  const p = createElement("p", [className], undefined);
+  const secondP = createElement("p", undefined, undefined, text);
+  element.append(p, secondP);
   return element;
 };
 
@@ -232,35 +249,4 @@ const createProfileContainer = ({ name, email, avatar }) => {
   const div = createElement("div", ["ps-4"], [h3, p]);
   element.append(img, div);
   return element;
-};
-
-const createTimeContainer = (time, text) => {
-  const element = createElement("div", [
-    "bg-danger",
-    "text-white",
-    "time-container",
-    "text-center",
-    "fw-bold",
-    "d-flex",
-    "flex-column",
-    "align-items-center",
-    "justify-content-center",
-  ]);
-  const p = createElement("p", undefined, undefined, time);
-  const secondP = createElement("p", undefined, undefined, text);
-  element.append(p, secondP);
-  return element;
-};
-
-const countDownFunction = (endsAt) => {
-  const countDownDate = new Date(endsAt).getTime();
-  const now = new Date().getTime();
-  const distance = countDownDate - now;
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-  );
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  return { days, hours, minutes, seconds };
 };

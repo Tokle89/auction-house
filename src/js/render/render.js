@@ -3,6 +3,7 @@ import { createListingCard } from "../components/listingCards.js";
 import { createCarouselCard } from "../components/carousel.js";
 import { fetchPopularListings } from "../utils/filter.js";
 import { createListing } from "../components/listing.js";
+import { countDown } from "../utils/countdown.js";
 
 export const renderCards = (url) => {
   const cardsContainer = document.querySelector(".cards-container");
@@ -42,7 +43,11 @@ export const renderListing = (url) => {
     .then((result) => {
       const listing = createListing(result);
       container.append(listing);
+
+      const date = result.endsAt;
+      countDown(date);
     })
+
     .catch((error) => {
       console.log(error);
     });
