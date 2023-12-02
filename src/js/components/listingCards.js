@@ -39,9 +39,9 @@ const imgContainer = (media, title) => {
     undefined,
     undefined,
     undefined,
+    checkMedia(media),
     title,
   );
-  img.src = checkMedia(media);
 
   element.append(img);
   return element;
@@ -58,13 +58,11 @@ const cardBody = (id, title, endsAt, bids) => {
 
   const header = createElement("h2", ["card-title", "fs-4"], undefined, title);
 
-  const date = parseDate(endsAt);
-
   const paragraph = createElement(
     "p",
     ["card-text"],
     undefined,
-    "Ends at: " + date,
+    `Ends at: ${parseDate(endsAt)}`,
   );
   const secondParagraph = createElement("p", ["card-text"], undefined);
 

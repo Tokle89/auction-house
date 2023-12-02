@@ -28,6 +28,7 @@ export const router = () => {
   } else if (href.includes("listing")) {
     const id = getQueryParamId();
     renderListing(url.BASE + url.LISTINGS + `/${id}` + url.listingsParams);
+    renderCards(url.BASE + url.LISTINGS + url.listingsParams);
   } else {
     renderCards(url.BASE + url.LISTINGS + url.listingsParams);
     renderCarousel();

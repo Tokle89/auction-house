@@ -64,12 +64,11 @@ const createTextContainer = (id, title, endsAt, bids, description) => {
     undefined,
     description,
   );
-  const date = parseDate(endsAt);
   const paragraph2 = createElement(
     "p",
     undefined,
     undefined,
-    "Ends at: " + date,
+    `Ends at: ${parseDate(endsAt)}`,
   );
 
   const latestBid = bids[bids.length - 1];
