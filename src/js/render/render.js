@@ -4,6 +4,8 @@ import { createCarouselCard } from "../components/carousel.js";
 import { fetchPopularListings } from "../utils/filter.js";
 import { createListing } from "../components/listing.js";
 import { countDown } from "../utils/countdown.js";
+import * as storage from "../storage/index.js";
+import { createProfile } from "../components/profile.js";
 
 export const renderCards = (url) => {
   const cardsContainer = document.querySelector(".cards-container");
@@ -46,6 +48,28 @@ export const renderListing = (url) => {
 
       const date = result.endsAt;
       countDown(date);
+    })
+
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const renderProfile = (profileUrl) => {
+  const profileContainer = document.querySelector(".profile-section");
+  profileContainer.innerHTML = "";
+  const fetchOptions = {
+    method: "GET",
+    headers: {
+      application: "application/json",
+      Authorization: `Bearer ${storage.get("token")}`,
+    },
+  };
+
+  apiCall(profileUrl, fetchOptions)
+    .then((result) => {
+      const profile = createProfile(result);
+      profileContainer.append(profile);
     })
 
     .catch((error) => {

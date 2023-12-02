@@ -179,8 +179,12 @@ const createBidInfoContainer = (seller, created, bids) => {
 const createInfoContainer = (created, bids) => {
   const element = createElement("div");
 
-  const time = parseDate(created);
-  const p = createElement("p", undefined, undefined, `Started: ${time}`);
+  const p = createElement(
+    "p",
+    undefined,
+    undefined,
+    `Created: ${parseDate(created)}`,
+  );
   const secondP = createElement("p", ["fw-bold"], undefined, "Current bid:");
   const LatestBid = bids[bids.length - 1];
   const thirdP = createElement(
