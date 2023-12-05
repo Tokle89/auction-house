@@ -16,13 +16,11 @@ import { toggleHeaderBtns } from "./utils/toggle.js";
 import { handleLogout } from "./auth/logout.js";
 import { getQueryParamId } from "./utils/queryParam.js";
 import * as storage from "./storage/index.js";
+import { toggleProfileListings } from "./utils/toggleProfileListings.js";
 
 const registerForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
 const logoutBtn = document.getElementById("logout-btn");
-const listingBtn = document.getElementById("listing-btn");
-const listingBidsBtn = document.getElementById("listing-bids-btn");
-const listingWinsBtn = document.getElementById("listing-wins-btn");
 
 export const router = () => {
   const href = location.href;
@@ -41,23 +39,7 @@ export const router = () => {
     renderProfile(url.BASE + url.PROFILE + `/${id}` + url.profileParams);
     renderProfileListings("listings");
 
-    listingBtn.addEventListener("click", () => {
-      let id = listingBtn.id;
-      renderProfileListings("listings");
-      toggleFeedBtnClass(id);
-    });
-
-    listingBidsBtn.addEventListener("click", () => {
-      let id = listingBidsBtn.id;
-      renderProfileListings("bids");
-      toggleFeedBtnClass(id);
-    });
-
-    listingWinsBtn.addEventListener("click", () => {
-      let id = listingWinsBtn.id;
-      renderProfileListings("wins");
-      toggleFeedBtnClass(id);
-    });
+    toggleProfileListings();
   } else if (href.includes("listing")) {
     const id = getQueryParamId();
     renderListing(url.BASE + url.LISTINGS + `/${id}` + url.listingsParams);
