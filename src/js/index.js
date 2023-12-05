@@ -55,15 +55,3 @@ router();
 toggleHeaderBtns();
 
 logoutBtn.addEventListener("click", handleLogout);
-
-export const toggleFeedBtnClass = (id) => {
-  const btnContainer = document.querySelector(".btn-group");
-  const btnArray = Object.values(btnContainer.children);
-  btnArray.forEach((btn) => {
-    if (btn.id === id) {
-      btn.classList.add("current-btn");
-    } else {
-      btn.classList.remove("current-btn");
-    }
-  });
-};

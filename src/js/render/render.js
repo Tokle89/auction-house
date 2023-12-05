@@ -137,8 +137,12 @@ export const renderProfileListings = (value) => {
         console.log(wins);
         if (wins.length > 0) {
           wins.forEach((listing) => {
-            const listingCard = createListingCard(listing);
-            container.append(listingCard);
+            apiCall(
+              url.BASE + url.LISTINGS + `/${listing}` + url.listingsParams,
+            ).then((result) => {
+              const listingCard = createListingCard(result);
+              container.append(listingCard);
+            });
           });
         } else {
           createMsg("You have not any wins yet");
