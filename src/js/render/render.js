@@ -6,20 +6,31 @@ import { createListing } from "../components/listing.js";
 import { countDown } from "../utils/countdown.js";
 import * as storage from "../storage/index.js";
 import { createProfile } from "../components/profile.js";
+import { getQueryParamId } from "../utils/queryParam.js";
+import * as url from "../api/constant.js";
+import { createMsg } from "../components/listingMsg.js";
 
-export const renderCards = (url) => {
+export const renderCards = (url, data) => {
   const cardsContainer = document.querySelector(".cards-container");
   cardsContainer.innerHTML = "";
-  apiCall(url)
-    .then((result) => {
-      result.forEach((listing) => {
-        const listingCard = createListingCard(listing);
-        cardsContainer.append(listingCard);
+  if (!data) {
+    apiCall(url)
+      .then((result) => {
+        console.log(result);
+        result.forEach((listing) => {
+          const listingCard = createListingCard(listing);
+          cardsContainer.append(listingCard);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    })
-    .catch((error) => {
-      console.log(error);
+  } else {
+    data.forEach((listing) => {
+      const listingCard = createListingCard(listing);
+      cardsContainer.append(listingCard);
     });
+  }
 };
 
 export const renderCarousel = () => {
@@ -68,6 +79,7 @@ export const renderProfile = (profileUrl) => {
 
   apiCall(profileUrl, fetchOptions)
     .then((result) => {
+      console.log(result);
       const profile = createProfile(result);
       profileContainer.append(profile);
     })
@@ -75,4 +87,80 @@ export const renderProfile = (profileUrl) => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+export const renderProfileListings = (value) => {
+  let id = getQueryParamId();
+  if (!id) {
+    id = storage.get("user").name;
+  }
+
+  let newUrl =
+    url.BASE +
+    url.PROFILE +
+    `/${id}` +
+    "/listings" +
+    "?&_seller=true&_bids=true&sort=created&sortOrder=desc";
+
+  const container = document.querySelector(".cards-container");
+  container.classList.add("row-cols-sm-2");
+  container.innerHTML = "";
+
+  const fetchOptions = {
+    method: "GET",
+    headers: {
+      application: "application/json",
+      Authorization: `Bearer ${storage.get("token")}`,
+    },
+  };
+
+  if (value === "bids") {
+    newUrl = url.BASE + url.PROFILE + `/${id}` + "/bids" + url.profileParams;
+    apiCall(newUrl, fetchOptions)
+      .then((result) => {
+        if (result.length > 0) {
+          result.forEach(({ listing, amount }) => {
+            const listingCard = createListingCard(listing, amount);
+            container.append(listingCard);
+          });
+        } else {
+          createMsg("You have not bid on any listings yet");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } else if (value === "wins") {
+    newUrl = url.BASE + url.PROFILE + `/${id}` + url.profileParams;
+    apiCall(newUrl, fetchOptions)
+      .then(({ wins }) => {
+        console.log(wins);
+        if (wins.length > 0) {
+          wins.forEach((listing) => {
+            const listingCard = createListingCard(listing);
+            container.append(listingCard);
+          });
+        } else {
+          createMsg("You have not any wins yet");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } else {
+    apiCall(newUrl, fetchOptions)
+      .then((result) => {
+        if (result.length > 0) {
+          result.forEach((listing) => {
+            const listingCard = createListingCard(listing);
+            container.append(listingCard);
+          });
+        } else {
+          createMsg("You have not posted any listings yet");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 };

@@ -2,7 +2,10 @@ import { createElement } from "../utils/createElement.js";
 import { parseDate } from "../utils/parse.js";
 import { checkMedia } from "../utils/media.js";
 
-export const createListingCard = ({ id, title, bids, endsAt, media }) => {
+export const createListingCard = (
+  { id, title, bids, endsAt, media },
+  amount,
+) => {
   const element = createElement("div", [
     "col",
     "py-4",
@@ -11,7 +14,7 @@ export const createListingCard = ({ id, title, bids, endsAt, media }) => {
   ]);
 
   const image = imgContainer(media, title);
-  const cardBodyElement = cardBody(id, title, endsAt, bids);
+  const cardBodyElement = cardBody(id, title, endsAt, bids, amount);
   const card = createElement(
     "div",
     [
@@ -47,7 +50,7 @@ const imgContainer = (media, title) => {
   return element;
 };
 
-const cardBody = (id, title, endsAt, bids) => {
+const cardBody = (id, title, endsAt, bids, amount) => {
   const element = createElement("div", [
     "card-body",
     "d-flex",
@@ -66,17 +69,27 @@ const cardBody = (id, title, endsAt, bids) => {
   );
   const secondParagraph = createElement("p", ["card-text"], undefined);
 
-  if (bids.length > 0) {
-    const lastBid = bids[bids.length - 1];
+  if (bids) {
+    if (bids.length > 0) {
+      const lastBid = bids[bids.length - 1];
+      const sum = createElement(
+        "span",
+        ["text-danger", "fw-bold"],
+        undefined,
+        `${lastBid.amount} EUR`,
+      );
+      secondParagraph.append(`Current bid: `, sum);
+    } else {
+      secondParagraph.append("No bids yet");
+    }
+  } else if (amount) {
     const sum = createElement(
       "span",
       ["text-danger", "fw-bold"],
       undefined,
-      `${lastBid.amount} EUR`,
+      `${amount} EUR`,
     );
-    secondParagraph.append(`Current bid: `, sum);
-  } else {
-    secondParagraph.append("No bids yet");
+    secondParagraph.append(`Your bid: `, sum);
   }
 
   const link = createElement(

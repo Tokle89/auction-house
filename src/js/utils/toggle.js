@@ -64,3 +64,8 @@ export const toggleBids = (button, bidsContainer, bids) => {
     button.classList.add("view");
   }
 };
+
+// export const toogleProfileListings = () => {
+//   const btnContainer = document.querySelector(".btn-group");
+//  const btnsArray
+// }
