@@ -6,6 +6,14 @@
 @import "listing";
 @import "profile";
 
+li {
+  min-height: 0px;
+
+  > * :hover {
+    background: blue;
+  }
+}
+
 //header
 .header-container {
   max-width: 1320px;
@@ -13,14 +21,6 @@
     img {
       width: 40px;
       height: 40px;
-    }
-
-    li {
-      min-height: 0px;
-
-      > *:hover {
-        background: #fff;
-      }
     }
   }
 }
@@ -151,3 +151,4 @@ footer {
 .profile-avatar {
   max-width: 86px;
 }
+//general

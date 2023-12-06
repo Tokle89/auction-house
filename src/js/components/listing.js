@@ -133,7 +133,14 @@ const createListingInfoContainer = (seller, created, bids) => {
   );
 
   const bidInfoContainer = createBidInfoContainer(seller, created, bids);
-  element.append(h2, timeRemainingContainer, bidInfoContainer);
+
+  if (seller.name === storage.get("user").name) {
+    const editDropdown = createEditDropdown();
+    bidInfoContainer.classList.remove("mt-5");
+    element.append(h2, timeRemainingContainer, editDropdown, bidInfoContainer);
+  } else {
+    element.append(h2, timeRemainingContainer, bidInfoContainer);
+  }
 
   return element;
 };
@@ -286,6 +293,42 @@ const createProfileContainer = ({ name, email, avatar }) => {
   const h3 = createElement("h3", ["fs-5", "fw-bold", "mb-o"], undefined, name);
   const p = createElement("p", ["text-dark"], undefined, email);
   const div = createElement("div", ["ps-4"], [h3, p]);
+
   element.append(img, div);
+
+  return element;
+};
+
+const createEditDropdown = () => {
+  const element = createElement("div", ["dropdown", "mb-2", "mt-5"]);
+  element.id = "edit-dropdown";
+  const btn = createElement(
+    "button",
+    ["btn", "btn-primary", "dropdown-toggle"],
+    undefined,
+    "Edit Listing",
+  );
+  btn.dataset.bsToggle = "dropdown";
+  const editBtn = createElement(
+    "button",
+    ["listing-modal_btn", "text-link", "text-primary", "dropdown-item", "p-2"],
+    undefined,
+    "Edit Listing",
+  );
+  const DeleteBtn = createElement(
+    "button",
+    ["listing-modal_btn", "text-link", "text-primary", "dropdown-item", "p-2"],
+    undefined,
+    "Delete Listing",
+  );
+  const li = createElement("li", undefined, [editBtn]);
+  const li2 = createElement("li", undefined, [DeleteBtn]);
+  const ul = createElement(
+    "ul",
+    ["dropdown-menu", "dropdown-menu-start", "border", "border-primary"],
+    [li, li2],
+  );
+  element.append(btn, ul);
+
   return element;
 };

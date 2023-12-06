@@ -45,7 +45,6 @@ export const renderCarousel = () => {
 
 export const renderListing = (url) => {
   const container = document.querySelector(".listing-section");
-  console.log(container);
   apiCall(url)
     .then((result) => {
       const listing = createListing(result);
