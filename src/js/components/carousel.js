@@ -1,6 +1,7 @@
 import { createElement } from "../utils/createElement.js";
 import { parseDate } from "../utils/parse.js";
 import { checkMedia } from "../utils/media.js";
+import { trimText } from "../utils/trimText.js";
 
 export const createCarouselCard = ({
   id,
@@ -57,12 +58,12 @@ const createTextContainer = (id, title, endsAt, bids, description) => {
     "flex-column",
     "justify-content-md-center",
   ]);
-  const h1 = createElement("h1", undefined, null, title);
+  const h1 = createElement("h1", undefined, null, trimText(title, 25));
   const paragraph = createElement(
     "p",
     ["text-dark", "d-none", "d-sm-block"],
     undefined,
-    description,
+    trimText(description, 70),
   );
   const paragraph2 = createElement(
     "p",

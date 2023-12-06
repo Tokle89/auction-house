@@ -1,6 +1,7 @@
 import { createElement } from "../utils/createElement.js";
 import { parseDate } from "../utils/parse.js";
 import { checkMedia } from "../utils/media.js";
+import { trimText } from "../utils/trimText.js";
 
 export const createListingCard = (
   { id, title, bids, endsAt, media },
@@ -59,7 +60,12 @@ const cardBody = (id, title, endsAt, bids, amount) => {
     "align-items-center",
   ]);
 
-  const header = createElement("h2", ["card-title", "fs-4"], undefined, title);
+  const header = createElement(
+    "h2",
+    ["card-title", "fs-4"],
+    undefined,
+    trimText(title, 25),
+  );
 
   const paragraph = createElement(
     "p",
