@@ -10,27 +10,21 @@ import { getQueryParamId } from "../utils/queryParam.js";
 import * as url from "../api/constant.js";
 import { createMsg } from "../components/listingMsg.js";
 
-export const renderCards = (url, data) => {
+export const renderCards = (url) => {
   const cardsContainer = document.querySelector(".cards-container");
   cardsContainer.innerHTML = "";
-  if (!data) {
-    apiCall(url)
-      .then((result) => {
-        console.log(result);
-        result.forEach((listing) => {
-          const listingCard = createListingCard(listing);
-          cardsContainer.append(listingCard);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
+
+  apiCall(url)
+    .then((result) => {
+      console.log(result);
+      result.forEach((listing) => {
+        const listingCard = createListingCard(listing);
+        cardsContainer.append(listingCard);
       });
-  } else {
-    data.forEach((listing) => {
-      const listingCard = createListingCard(listing);
-      cardsContainer.append(listingCard);
+    })
+    .catch((error) => {
+      console.log(error);
     });
-  }
 };
 
 export const renderCarousel = () => {

@@ -17,10 +17,14 @@ import { handleLogout } from "./auth/logout.js";
 import { getQueryParamId } from "./utils/queryParam.js";
 import * as storage from "./storage/index.js";
 import { toggleProfileListings } from "./utils/toggleProfileListings.js";
+import { handleSubmitListing } from "./listing/post.js";
+import { renderMediaInput } from "./utils/mediaInput.js";
 
 const registerForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
 const logoutBtn = document.getElementById("logout-btn");
+const listingForm = document.getElementById("listing-form");
+const mediaBtn = document.getElementById("media-btn");
 
 export const router = () => {
   const href = location.href;
@@ -55,3 +59,5 @@ router();
 toggleHeaderBtns();
 
 logoutBtn.addEventListener("click", handleLogout);
+listingForm.addEventListener("submit", handleSubmitListing);
+mediaBtn.addEventListener("click", renderMediaInput);
