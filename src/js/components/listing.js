@@ -186,21 +186,25 @@ const createInfoContainer = (created, bids) => {
     `Created: ${parseDate(created)}`,
   );
   const secondP = createElement("p", ["fw-bold"], undefined, "Current bid:");
-  const LatestBid = bids[bids.length - 1];
-  const thirdP = createElement(
-    "p",
-    undefined,
-    undefined,
-    `By: ${LatestBid.bidderName}`,
-  );
-  const price = createElement(
-    "span",
-    ["text-danger", "fw-bold"],
-    undefined,
-    `${LatestBid.amount} EUR`,
-  );
+  const thirdP = createElement("p");
+  const fourthP = createElement("p");
 
-  const fourthP = createElement("p", undefined, [`Amount: `, price]);
+  if (bids.length > 0) {
+    const LatestBid = bids[bids.length - 1];
+    thirdP.append(`By: ${LatestBid.bidderName}`);
+    const price = createElement(
+      "span",
+      ["text-danger", "fw-bold"],
+      undefined,
+      `${LatestBid.amount} EUR`,
+    );
+    fourthP.append(`Amount: `, price);
+  } else {
+    thirdP.append("No bids yet!");
+    fourthP.append("Be the first to bid!");
+    fourthP.classList.add("text-secondary", "fw-bold");
+  }
+
   const fundsP = createElement(
     "p",
     ["text-secondary", "fw-bold"],

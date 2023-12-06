@@ -42,7 +42,7 @@ const submitPosting = (title, description, tags, endsAt, media) => {
     apiCall(url.BASE + url.LISTINGS, fetchOptions).then((result) => {
       console.log(result);
       if (result.errors) {
-        alert(result.errors[0].msg);
+        alert(result.errors[0].message);
       } else {
         window.location.replace(`../../../listing/?id=${result.id}`);
       }
