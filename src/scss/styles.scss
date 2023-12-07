@@ -6,14 +6,6 @@
 @import "listing";
 @import "profile";
 
-li {
-  min-height: 0px;
-
-  > * :hover {
-    background: blue;
-  }
-}
-
 //header
 .header-container {
   max-width: 1320px;
@@ -152,3 +144,6 @@ footer {
   max-width: 86px;
 }
 //general
+li {
+  min-height: 0px;
+}

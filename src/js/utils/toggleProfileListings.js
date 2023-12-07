@@ -1,5 +1,5 @@
 import { renderProfileListings } from "../render/render.js";
-
+import { toggleBtnClass } from "./toggle.js";
 export const toggleProfileListings = () => {
   const btnContainer = document.querySelector(".btn-group");
   const btnArray = Object.values(btnContainer.children);
@@ -7,19 +7,7 @@ export const toggleProfileListings = () => {
     btn.addEventListener("click", () => {
       let id = btn.id;
       renderProfileListings(`${id}`);
-      toggleFeedBtnClass(id);
+      toggleBtnClass(id, ".btn-group", "current-btn");
     });
-  });
-};
-
-const toggleFeedBtnClass = (id) => {
-  const btnContainer = document.querySelector(".btn-group");
-  const btnArray = Object.values(btnContainer.children);
-  btnArray.forEach((btn) => {
-    if (btn.id === id) {
-      btn.classList.add("current-btn");
-    } else {
-      btn.classList.remove("current-btn");
-    }
   });
 };

@@ -64,3 +64,15 @@ export const toggleBids = (button, bidsContainer, bids) => {
     button.classList.add("view");
   }
 };
+
+export const toggleBtnClass = (id, containerClass, childrenClass) => {
+  const btnContainer = document.querySelector(containerClass);
+  const btnArray = Object.values(btnContainer.children);
+  btnArray.forEach((btn) => {
+    if (btn.id === id) {
+      btn.classList.add(childrenClass);
+    } else {
+      btn.classList.remove(childrenClass);
+    }
+  });
+};
