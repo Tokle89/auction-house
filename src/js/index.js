@@ -19,12 +19,14 @@ import * as storage from "./storage/index.js";
 import { toggleProfileListings } from "./utils/toggleProfileListings.js";
 import { handleSubmitListing } from "./listing/post.js";
 import { renderMediaInput } from "./utils/mediaInput.js";
+import { handleEditListing } from "./listing/edit.js";
 
 const registerForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
 const logoutBtn = document.getElementById("logout-btn");
 const listingForm = document.getElementById("listing-form");
-const mediaBtn = document.getElementById("media-btn");
+const mediaBtns = document.querySelectorAll(".media-btn");
+const editForm = document.getElementById("edit-listing-form");
 
 export const router = () => {
   const href = location.href;
@@ -48,6 +50,7 @@ export const router = () => {
     const id = getQueryParamId();
     renderListing(url.BASE + url.LISTINGS + `/${id}` + url.listingsParams);
     renderCards(url.BASE + url.LISTINGS + url.listingsParams);
+    editForm.addEventListener("submit", () => handleEditListing(id));
   } else {
     renderCards(url.BASE + url.LISTINGS + url.listingsParams);
     renderCarousel();
@@ -60,4 +63,12 @@ toggleHeaderBtns();
 
 logoutBtn.addEventListener("click", handleLogout);
 listingForm.addEventListener("submit", handleSubmitListing);
-mediaBtn.addEventListener("click", renderMediaInput);
+mediaBtns.forEach((btn) =>
+  btn.addEventListener("click", () => {
+    if (btn.id == "edit") {
+      renderMediaInput("edit-media-input-container");
+    } else {
+      renderMediaInput("media-input-container");
+    }
+  }),
+);

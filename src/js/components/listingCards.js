@@ -103,7 +103,7 @@ const cardBody = (id, title, endsAt, bids, amount) => {
     ["btn", "btn-secondary", "mt-1"],
     undefined,
     "View",
-    `./listing/index.html?id=${id}`,
+    `../../../listing/index.html?id=${id}`,
   );
 
   const textContainer = createElement(

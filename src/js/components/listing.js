@@ -315,6 +315,8 @@ const createEditDropdown = () => {
     undefined,
     "Edit Listing",
   );
+  editBtn.dataset.bsToggle = "modal";
+  editBtn.dataset.bsTarget = "#edit-listing-modal";
   const DeleteBtn = createElement(
     "button",
     ["listing-modal_btn", "text-link", "text-primary", "dropdown-item", "p-2"],

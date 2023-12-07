@@ -1,8 +1,7 @@
 import { createElement } from "./createElement.js";
 
-const mediaInputContainer = document.getElementById("media-input-container");
-
-export const renderMediaInput = () => {
+export const renderMediaInput = (className) => {
+  const mediaInputContainer = document.getElementById(className);
   const input = createElement(
     "input",
     ["form-control", "mb-2"],

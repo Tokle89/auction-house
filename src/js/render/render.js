@@ -9,6 +9,7 @@ import { createProfile } from "../components/profile.js";
 import { getQueryParamId } from "../utils/queryParam.js";
 import * as url from "../api/constant.js";
 import { createMsg } from "../components/listingMsg.js";
+import { createEditModalContent } from "../components/editModal.js";
 
 export const renderCards = (url) => {
   const cardsContainer = document.querySelector(".cards-container");
@@ -16,7 +17,6 @@ export const renderCards = (url) => {
 
   apiCall(url)
     .then((result) => {
-      console.log(result);
       result.forEach((listing) => {
         const listingCard = createListingCard(listing);
         cardsContainer.append(listingCard);
@@ -52,6 +52,7 @@ export const renderListing = (url) => {
 
       const date = result.endsAt;
       countDown(date);
+      createEditModalContent(result);
     })
 
     .catch((error) => {

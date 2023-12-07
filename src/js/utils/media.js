@@ -5,3 +5,15 @@ export const checkMedia = (media) => {
     return media[0];
   }
 };
+
+export const verifyImg = (media) => {
+  const img = new Image();
+  img.src = media;
+  img.onload = () => {
+    return true;
+  };
+
+  if (img.onload) {
+    return media;
+  }
+};

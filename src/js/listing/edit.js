@@ -1,15 +1,19 @@
 import { sendListing } from "./index.js";
 import { verifyImg } from "../utils/media.js";
-export const handleSubmitListing = (event) => {
+export const handleEditListing = (id) => {
   event.preventDefault();
 
   const [title, description, tags, endsAt] = event.target.elements;
 
   let mediaArr = [];
-  const mediaGallery = document.querySelectorAll(`input[name="media"]:enabled`);
+
+  const form = document.getElementById("edit-listing-form");
+  const mediaGallery = form.querySelectorAll(`input[name="media"]:enabled`);
 
   mediaGallery.forEach((media) => {
-    mediaArr.push(verifyImg(media.value));
+    if (media.value !== "") {
+      mediaArr.push(verifyImg(media.value));
+    }
   });
 
   if (mediaArr.length === 0) {
@@ -17,9 +21,10 @@ export const handleSubmitListing = (event) => {
   }
 
   const tagsArr = tags.value.replace(/\s+/g, "").split(",");
-
+  console.log(id);
   sendListing(
-    "POST",
+    "PUT",
+    id,
     title,
     description,
     tagsArr,
