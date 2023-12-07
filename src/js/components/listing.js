@@ -2,6 +2,7 @@ import { createElement } from "../utils/createElement.js";
 import { parseDate } from "../utils/parse.js";
 import * as storage from "../storage/index.js";
 import { toggleBids } from "../utils/toggle.js";
+import { deleteListing } from "../listing/delete.js";
 
 export const createListing = ({
   media,
@@ -10,6 +11,7 @@ export const createListing = ({
   seller,
   created,
   bids,
+  id,
 }) => {
   const element = createElement("div", [
     "container",
@@ -20,7 +22,7 @@ export const createListing = ({
   ]);
 
   const listingContent = createContentContainer(media, title, description);
-  const listingInfo = createListingInfoContainer(seller, created, bids);
+  const listingInfo = createListingInfoContainer(seller, created, bids, id);
   element.append(listingContent, listingInfo);
   return element;
 };
@@ -106,7 +108,7 @@ const createTextContainer = (title, description) => {
   return element;
 };
 
-const createListingInfoContainer = (seller, created, bids) => {
+const createListingInfoContainer = (seller, created, bids, id) => {
   const element = createElement("div", ["listing-info", "container"]);
 
   const h2 = createElement(
@@ -135,7 +137,7 @@ const createListingInfoContainer = (seller, created, bids) => {
   const bidInfoContainer = createBidInfoContainer(seller, created, bids);
 
   if (seller.name === storage.get("user").name) {
-    const editDropdown = createEditDropdown();
+    const editDropdown = createEditDropdown(id);
     bidInfoContainer.classList.remove("mt-5");
     element.append(h2, timeRemainingContainer, editDropdown, bidInfoContainer);
   } else {
@@ -184,7 +186,7 @@ const createBidInfoContainer = (seller, created, bids) => {
 };
 
 const createInfoContainer = (created, bids) => {
-  const element = createElement("div");
+  const element = createElement("div", ["info-container"]);
 
   const p = createElement(
     "p",
@@ -299,7 +301,7 @@ const createProfileContainer = ({ name, email, avatar }) => {
   return element;
 };
 
-const createEditDropdown = () => {
+const createEditDropdown = (id) => {
   const element = createElement("div", ["dropdown", "mb-2", "mt-5"]);
   element.id = "edit-dropdown";
   const btn = createElement(
@@ -317,14 +319,18 @@ const createEditDropdown = () => {
   );
   editBtn.dataset.bsToggle = "modal";
   editBtn.dataset.bsTarget = "#edit-listing-modal";
-  const DeleteBtn = createElement(
+  const deleteBtn = createElement(
     "button",
     ["listing-modal_btn", "text-link", "text-primary", "dropdown-item", "p-2"],
     undefined,
     "Delete Listing",
   );
+  deleteBtn.addEventListener("click", () => {
+    deleteListing(id);
+  });
+
   const li = createElement("li", undefined, [editBtn]);
-  const li2 = createElement("li", undefined, [DeleteBtn]);
+  const li2 = createElement("li", undefined, [deleteBtn]);
   const ul = createElement(
     "ul",
     ["dropdown-menu", "dropdown-menu-start", "border", "border-primary"],
