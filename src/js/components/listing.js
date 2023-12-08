@@ -4,6 +4,8 @@ import * as storage from "../storage/index.js";
 import { toggleBids } from "../utils/toggle.js";
 import { deleteListing } from "../listing/delete.js";
 import { checkMedia } from "../utils/media.js";
+import { handleBid } from "../listing/bid.js";
+import { minBid } from "../utils/bidChecker.js";
 
 export const createListing = ({
   media,
@@ -135,7 +137,7 @@ const createListingInfoContainer = (seller, created, bids, id) => {
     secondContainer,
   );
 
-  const bidInfoContainer = createBidInfoContainer(seller, created, bids);
+  const bidInfoContainer = createBidInfoContainer(seller, created, bids, id);
 
   if (seller.name === storage.get("user").name) {
     const editDropdown = createEditDropdown(id);
@@ -166,7 +168,7 @@ const createTimeContainer = (className, text) => {
   return element;
 };
 
-const createBidInfoContainer = (seller, created, bids) => {
+const createBidInfoContainer = (seller, created, bids, id) => {
   const element = createElement("div", [
     "mt-5",
     "border",
@@ -181,12 +183,12 @@ const createBidInfoContainer = (seller, created, bids) => {
     "py-1",
     "mb-2",
   ]);
-  const infoContainer = createInfoContainer(created, bids);
+  const infoContainer = createInfoContainer(created, bids, id);
   element.append(profileContainer, border, infoContainer);
   return element;
 };
 
-const createInfoContainer = (created, bids) => {
+const createInfoContainer = (created, bids, id) => {
   const element = createElement("div", ["info-container"]);
 
   const p = createElement(
@@ -235,7 +237,7 @@ const createInfoContainer = (created, bids) => {
     [fourthP, fundsP],
   );
 
-  const form = createBidForm();
+  const form = createBidForm(id, bids);
   const bidsContainer = createElement("div", ["bids-container", "mt-3"]);
   const button = createElement(
     "button",
@@ -251,19 +253,20 @@ const createInfoContainer = (created, bids) => {
   return element;
 };
 
-const createBidForm = () => {
+const createBidForm = (id, bid) => {
   const element = createElement("form", [
     "d-flex",
     "flex-column",
     "flex-sm-row",
   ]);
   element.action = "post";
+  element.id = "bid-form";
   const input = createElement("input", ["form-control", "mb-4"]);
   input.id = "bid";
-  input.placeholder = "Enter Amount";
+  input.placeholder = `Minimum Amount: ${minBid(bid)} `;
   input.required = true;
   input.type = "number";
-  input.min = "1";
+  input.min = minBid(bid);
 
   const button = createElement(
     "button",
@@ -273,6 +276,9 @@ const createBidForm = () => {
   );
   button.type = "submit";
   element.append(input, button);
+
+  element.addEventListener("submit", () => handleBid(id));
+
   return element;
 };
 

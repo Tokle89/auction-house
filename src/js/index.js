@@ -23,6 +23,7 @@ import { handleEditListing } from "./listing/edit.js";
 import { filterBtns } from "./filters/filter.js";
 import { handleSearchSubmit } from "./search/handleSearch.js";
 import { search } from "./search/search.js";
+import { updateCredit } from "./utils/credits/credits.js";
 
 const registerForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
@@ -69,7 +70,7 @@ export const router = () => {
 };
 
 router();
-
+updateCredit();
 toggleHeaderBtns();
 searchForm.addEventListener("submit", handleSearchSubmit);
 logoutBtn.addEventListener("click", handleLogout);

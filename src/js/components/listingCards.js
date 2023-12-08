@@ -12,6 +12,7 @@ export const createListingCard = (
     "py-4",
     "d-flex,",
     "justify-content-center",
+    "card-container",
   ]);
 
   const image = imgContainer(media, title);

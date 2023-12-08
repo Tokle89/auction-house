@@ -3,7 +3,7 @@ import { createElement } from "./createElement.js";
 import { parseDate } from "./parse.js";
 
 const authBtns = document.getElementById("auth-btns");
-const profileBtn = document.querySelector(".profile-btn");
+const profileBtn = document.getElementById("profile-btn");
 
 export const toggleHeaderBtns = () => {
   const token = localStorage.getItem("token");

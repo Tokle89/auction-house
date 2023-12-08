@@ -86,11 +86,15 @@ a {
   .card > * {
     flex: 1;
   }
-
+  .card-container {
+    @media (max-width: 990px) {
+      max-width: 350px;
+    }
+  }
   .card {
     max-width: 660px;
-    height: 350px;
-
+    height: 400px;
+    overflow: hidden;
     .card-body {
       padding: 0px;
     }
@@ -101,10 +105,11 @@ a {
 
     @media (max-width: 990px) {
       max-width: 350px;
-      height: 400px;
 
       img {
-        height: 240px;
+        height: 215px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 5px;
       }
     }
   }
