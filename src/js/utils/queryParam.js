@@ -1,6 +1,6 @@
-export const getQueryParamId = () => {
+export const getQueryParamId = (arg) => {
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
-  const id = params.get("id");
-  return id;
+  const value = params.get(`${arg}`);
+  return value;
 };

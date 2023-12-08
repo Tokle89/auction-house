@@ -20,6 +20,9 @@ import { toggleProfileListings } from "./utils/toggleProfileListings.js";
 import { handleSubmitListing } from "./listing/post.js";
 import { renderMediaInput } from "./utils/mediaInput.js";
 import { handleEditListing } from "./listing/edit.js";
+import { filterBtns } from "./filters/filter.js";
+import { handleSearchSubmit } from "./search/handleSearch.js";
+import { search } from "./search/search.js";
 
 const registerForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
@@ -27,6 +30,7 @@ const logoutBtn = document.getElementById("logout-btn");
 const listingForm = document.getElementById("listing-form");
 const mediaBtns = document.querySelectorAll(".media-btn");
 const editForm = document.getElementById("edit-listing-form");
+const searchForm = document.getElementById("search");
 
 export const router = () => {
   const href = location.href;
@@ -38,7 +42,7 @@ export const router = () => {
     loginForm.addEventListener("submit", handleLogin);
     loginCredentials();
   } else if (href.includes("profile")) {
-    let id = getQueryParamId();
+    let id = getQueryParamId("id");
     if (!id) {
       id = storage.get("user").name;
     }
@@ -47,20 +51,27 @@ export const router = () => {
 
     toggleProfileListings();
   } else if (href.includes("listing")) {
-    const id = getQueryParamId();
+    const id = getQueryParamId("id");
     renderListing(url.BASE + url.LISTINGS + `/${id}` + url.listingsParams);
     renderCards(url.BASE + url.LISTINGS + url.listingsParams);
     editForm.addEventListener("submit", () => handleEditListing(id));
+    filterBtns();
+  } else if (href.includes("query")) {
+    const carousel = document.getElementById("carouselExampleDark");
+    carousel.remove();
+    let query = getQueryParamId("query");
+    search(query);
   } else {
     renderCards(url.BASE + url.LISTINGS + url.listingsParams);
     renderCarousel();
+    filterBtns();
   }
 };
 
 router();
 
 toggleHeaderBtns();
-
+searchForm.addEventListener("submit", handleSearchSubmit);
 logoutBtn.addEventListener("click", handleLogout);
 listingForm.addEventListener("submit", handleSubmitListing);
 mediaBtns.forEach((btn) =>

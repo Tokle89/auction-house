@@ -1,7 +1,7 @@
 import { apiCall } from "../api/api.js";
 import { createListingCard } from "../components/listingCards.js";
 import { createCarouselCard } from "../components/carousel.js";
-import { fetchPopularListings } from "../utils/filter.js";
+import { fetchPopularListings } from "../filters/popular.js";
 import { createListing } from "../components/listing.js";
 import { countDown } from "../utils/countdown.js";
 import * as storage from "../storage/index.js";
@@ -93,7 +93,7 @@ export const renderProfile = (profileUrl) => {
 };
 
 export const renderProfileListings = (value) => {
-  let id = getQueryParamId();
+  let id = getQueryParamId("id");
   if (!id) {
     id = storage.get("user").name;
   }
