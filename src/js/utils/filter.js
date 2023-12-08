@@ -47,7 +47,10 @@ btnsArr.forEach((btn) => {
           url.LISTINGS +
           `?&_seller=true&_bids=true&_active=true&sort=endsAt&sortOrder=asc`,
       );
-      console.log("working");
+    } else if (id === "popular") {
+      fetchPopularListings().then((listings) =>
+        renderCards(undefined, listings),
+      );
     }
   });
 });

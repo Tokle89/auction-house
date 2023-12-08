@@ -11,20 +11,27 @@ import * as url from "../api/constant.js";
 import { createMsg } from "../components/listingMsg.js";
 import { createEditModalContent } from "../components/editModal.js";
 
-export const renderCards = (url) => {
+export const renderCards = (url, data) => {
   const cardsContainer = document.querySelector(".cards-container");
   cardsContainer.innerHTML = "";
 
-  apiCall(url)
-    .then((result) => {
-      result.forEach((listing) => {
-        const listingCard = createListingCard(listing);
-        cardsContainer.append(listingCard);
+  if (!data) {
+    apiCall(url)
+      .then((result) => {
+        result.forEach((listing) => {
+          const listingCard = createListingCard(listing);
+          cardsContainer.append(listingCard);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    })
-    .catch((error) => {
-      console.log(error);
+  } else {
+    data.forEach((listing) => {
+      const listingCard = createListingCard(listing);
+      cardsContainer.append(listingCard);
     });
+  }
 };
 
 export const renderCarousel = () => {
