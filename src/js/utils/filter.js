@@ -2,6 +2,7 @@ import { apiCall } from "../api/api.js";
 import * as url from "../api/constant.js";
 import { toggleBtnClass } from "./toggle.js";
 import { renderCards } from "../render/render.js";
+import { scrollToListings } from "./scroll.js";
 
 export const fetchPopularListings = async () => {
   const ListingsArr = [];
@@ -32,7 +33,6 @@ const sortListingsByBids = (listings) => {
 };
 
 const filterBtns = document.querySelector(".filter-btn-group");
-console.log(filterBtns.children);
 const btnsArr = Object.values(filterBtns.children);
 btnsArr.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -52,5 +52,9 @@ btnsArr.forEach((btn) => {
         renderCards(undefined, listings),
       );
     }
+
+    setTimeout(() => {
+      scrollToListings();
+    }, 300);
   });
 });

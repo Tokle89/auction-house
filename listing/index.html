@@ -379,46 +379,24 @@
       </div>
       <section class="listing-section"></section>
       <section>
-        <div
-          class="filter-container container mt-5 d-flex flex-column flex-md-row justify-content-evenly"
-        >
-          <div>
-            <h2 class="fs-5">Sort by:</h2>
-            <div class="mb-3">
-              <button
-                class="btn filter-btn rounded-pill text-secondary bg-white mb-2"
-              >
-                Latest
-              </button>
-              <button
-                class="btn filter-btn rounded-pill text-secondary bg-white mb-2"
-              >
-                Popular
-              </button>
-              <button
-                class="btn filter-btn rounded-pill text-secondary bg-white mb-2"
-              >
-                Ending
-              </button>
-            </div>
-          </div>
-          <div class="mb-3">
-            <h3 class="fs-5">Order:</h3>
+        <div class="filter-container container mt-5">
+          <h2 class="fs-5">Sort by:</h2>
+          <div class="mb-3 filter-btn-group">
             <button
-              class="btn filter-btn rounded-pill text-secondary bg-white mb-2"
+              class="btn filter-btn rounded-pill mb-2 current-filter-btn"
+              id="latest"
             >
-              Ascending
+              Latest
             </button>
-            <button
-              class="btn filter-btn rounded-pill text-secondary bg-white mb-2"
-            >
-              Descending
+            <button class="btn filter-btn rounded-pill mb-2" id="popular">
+              Popular
+            </button>
+            <button class="btn filter-btn rounded-pill e mb-2" id="ending">
+              Ending
             </button>
           </div>
         </div>
         <div class="listing-container container">
-          <h2 class="fs-5">Popular Listings:</h2>
-
           <div class="cards-container row row-cols-1 row-cols-sm-2">
             <div class="col py-4 d-flex justify-content-center">
               <div

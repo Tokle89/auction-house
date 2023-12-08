@@ -10,6 +10,7 @@ import { getQueryParamId } from "../utils/queryParam.js";
 import * as url from "../api/constant.js";
 import { createMsg } from "../components/listingMsg.js";
 import { createEditModalContent } from "../components/editModal.js";
+import { scrollToListings } from "../utils/scroll.js";
 
 export const renderCards = (url, data) => {
   const cardsContainer = document.querySelector(".cards-container");
@@ -30,6 +31,7 @@ export const renderCards = (url, data) => {
     data.forEach((listing) => {
       const listingCard = createListingCard(listing);
       cardsContainer.append(listingCard);
+      scrollToListings();
     });
   }
 };
