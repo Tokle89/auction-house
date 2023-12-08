@@ -43,7 +43,7 @@ const imgContainer = (media, title) => {
     undefined,
     undefined,
     undefined,
-    checkMedia(media),
+    checkMedia(media[0]),
     title,
   );
 

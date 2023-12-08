@@ -1,29 +1,38 @@
 import { sendListing } from "./index.js";
 import { verifyImg } from "../utils/media.js";
-export const handleSubmitListing = (event) => {
+export const handleSubmitListing = async (event) => {
   event.preventDefault();
+
+  let invalidImageDetected = false;
 
   const [title, description, tags, endsAt] = event.target.elements;
 
-  let mediaArr = [];
   const mediaGallery = document.querySelectorAll(`input[name="media"]:enabled`);
 
-  mediaGallery.forEach((media) => {
-    mediaArr.push(verifyImg(media.value));
-  });
+  const mediaArr = await Promise.all(
+    Array.from(mediaGallery).map(async (media) => {
+      const loadable = await verifyImg(media.value);
+      if (!loadable) {
+        media.value = "invalid url";
+        media.classList.add("is-invalid");
+        invalidImageDetected = true;
+      }
+      return loadable ? media.value : null;
+    }),
+  );
+  if (invalidImageDetected) return;
 
-  if (mediaArr.length === 0) {
-    mediaArr = null;
-  }
+  const validMediaArr = mediaArr.filter((media) => media !== null);
 
   const tagsArr = tags.value.replace(/\s+/g, "").split(",");
 
   sendListing(
     "POST",
+    undefined,
     title,
     description,
     tagsArr,
     new Date(endsAt.value),
-    mediaArr,
+    validMediaArr,
   );
 };

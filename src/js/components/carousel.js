@@ -44,9 +44,10 @@ const createCarouselCardImg = (media, title) => {
     undefined,
     undefined,
     undefined,
+    checkMedia(media[0]),
     title,
   );
-  element.src = checkMedia(media);
+
   return element;
 };
 

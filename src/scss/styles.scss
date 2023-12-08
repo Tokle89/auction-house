@@ -147,3 +147,7 @@ footer {
 li {
   min-height: 0px;
 }
+
+.is-invalid {
+  border: 2px solid $danger;
+}

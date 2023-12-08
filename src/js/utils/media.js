@@ -1,19 +1,20 @@
 export const checkMedia = (media) => {
-  if (media.length < 1) {
-    return "https://via.placeholder.com/300x200?text=No+image+available";
+  if (media && media.length > 0 && media.includes("http")) {
+    return media;
   } else {
-    return media[0];
+    return "https://via.placeholder.com/300x200?text=No+image+available";
   }
 };
 
 export const verifyImg = (media) => {
-  const img = new Image();
-  img.src = media;
-  img.onload = () => {
-    return true;
-  };
-
-  if (img.onload) {
-    return media;
-  }
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.src = media;
+    img.onload = () => {
+      resolve(media);
+    };
+    img.onerror = () => {
+      resolve(false);
+    };
+  });
 };

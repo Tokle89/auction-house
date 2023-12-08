@@ -3,6 +3,7 @@ import { parseDate } from "../utils/parse.js";
 import * as storage from "../storage/index.js";
 import { toggleBids } from "../utils/toggle.js";
 import { deleteListing } from "../listing/delete.js";
+import { checkMedia } from "../utils/media.js";
 
 export const createListing = ({
   media,
@@ -45,7 +46,7 @@ const createImgContainer = (media, title) => {
     undefined,
     undefined,
     undefined,
-    media[0],
+    checkMedia(media[0]),
     title,
   );
   element.append(mainImg);
@@ -289,7 +290,7 @@ const createProfileContainer = ({ name, email, avatar }) => {
     undefined,
     undefined,
     undefined,
-    avatar,
+    checkMedia(avatar),
     name,
   );
   const h3 = createElement("h3", ["fs-5", "fw-bold", "mb-o"], undefined, name);
