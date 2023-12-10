@@ -78,7 +78,7 @@ const cardBody = (id, title, endsAt, bids, amount) => {
 
   if (bids) {
     if (bids.length > 0) {
-      const lastBid = bids[bids.length - 1];
+      const lastBid = bids[0];
       const sum = createElement(
         "span",
         ["text-danger", "fw-bold"],

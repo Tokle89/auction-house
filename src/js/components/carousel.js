@@ -73,7 +73,7 @@ const createTextContainer = (id, title, endsAt, bids, description) => {
     `Ends at: ${parseDate(endsAt)}`,
   );
 
-  const latestBid = bids[bids.length - 1];
+  const latestBid = bids[0];
   const span = createElement(
     "span",
     ["text-danger", "fw-bold"],

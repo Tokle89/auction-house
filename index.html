@@ -40,14 +40,14 @@
               <span class="navbar-toggler-icon fs-2"></span>
             </button>
             <div
-              class="navbar-collapse align-content-stretch collapse show nav-border"
+              class="navbar-collapse align-content-stretch collapse nav-border"
               id="navbarSupportedContent"
             >
               <ul class="d-md-none list-unstyled m-0 text-secondary">
-                <li class="p-2 py-3 nav-border">
+                <li class="p-2 py-4 nav-border nav-li">
                   <a href="./" class="nav-link text-link">Home</a>
                 </li>
-                <li class="px-2 py-3 nav-border">
+                <li class="px-2 py-4 border-bottom border-warning nav-li">
                   <button
                     type="button"
                     class="listing-modal_btn text-link"
@@ -58,57 +58,63 @@
                     listing
                   </button>
                 </li>
-              </ul>
-              <div class="d-flex ms-md-auto p-3" id="profile-btn">
-                <div class="dropdown text-end profile-btn">
-                  <button
-                    class="listing-modal_btn d-block dropdown-toggle show"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="true"
+                <li class="nav-li">
+                  <div
+                    class="d-flex ms-md-auto p-3 align-items-center"
+                    id="profile-btn"
                   >
-                    <img
-                      src=""
-                      alt=""
-                      class="rounded-circle"
-                      id="profile-btn-img"
-                    />
-                  </button>
+                    <div class="dropdown text-end profile-btn">
+                      <button
+                        class="listing-modal_btn d-block dropdown-toggle show"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="true"
+                      >
+                        <img
+                          src=""
+                          alt=""
+                          class="rounded-circle"
+                          id="profile-btn-img"
+                        />
+                      </button>
 
-                  <ul
-                    class="dropdown-menu dropdown-menu-start dropdown-menu-md-end text-secondary m-0 border border-warning"
-                    data-popper-placement="bottom-start"
-                  >
-                    <li>
-                      <button
-                        type="button"
-                        class="listing-modal_btn text-link py-2"
-                        data-bs-toggle="modal"
-                        data-bs-target="#add-listing-modal"
+                      <ul
+                        class="dropdown-menu dropdown-menu-start dropdown-menu-md-end text-secondary m-0 border border-warning"
+                        data-popper-placement="bottom-start"
                       >
-                        <span class="text-primary fw-bold px-2">+</span>Add
-                        listing
-                      </button>
-                    </li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li>
-                      <a
-                        class="dropdown-item text-link p-2 text-secondary"
-                        href="./profile/"
-                        >Profile</a
-                      >
-                    </li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li>
-                      <button
-                        class="dropdown-item listing-modal_btn text-link text-secondary p-2"
-                        id="logout-btn"
-                      >
-                        Sign Out
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                        <li>
+                          <button
+                            type="button"
+                            class="listing-modal_btn text-link py-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#add-listing-modal"
+                          >
+                            <span class="text-primary fw-bold px-2">+</span>Add
+                            listing
+                          </button>
+                        </li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                          <a
+                            class="dropdown-item text-link p-2 text-secondary"
+                            href="./profile/"
+                            >Profile</a
+                          >
+                        </li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                          <button
+                            class="dropdown-item listing-modal_btn text-link text-secondary p-2"
+                            id="logout-btn"
+                          >
+                            Sign Out
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
               <div
                 class="ms-md-auto justify-content-between d-flex px-2 py-3"
                 id="auth-btns"

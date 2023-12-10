@@ -2,7 +2,7 @@ import * as storage from "../../storage/index.js";
 import * as url from "../../api/constant.js";
 import { apiCall } from "../../api/api.js";
 
-export const fetchCredits = (name) => {
+export const fetchCredits = async (name) => {
   const fetchOptions = {
     method: "GET",
     headers: {
@@ -11,10 +11,14 @@ export const fetchCredits = (name) => {
     },
   };
 
-  apiCall(
-    url.BASE + url.PROFILE + `/${name}` + url.profileParams,
-    fetchOptions,
-  ).then(({ credits }) => {
+  try {
+    const { credits } = await apiCall(
+      url.BASE + url.PROFILE + `/${name}`,
+      fetchOptions,
+    );
+
     return credits;
-  });
+  } catch (error) {
+    console.log(error);
+  }
 };

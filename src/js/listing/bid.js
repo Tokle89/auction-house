@@ -1,6 +1,7 @@
 import { apiCall } from "../api/api.js";
 import * as url from "../api/constant.js";
 import * as storage from "../storage/index.js";
+import { updateCredit } from "../utils/credits/credits.js";
 
 export const handleBid = (id) => {
   event.preventDefault();
@@ -25,7 +26,10 @@ const sendBid = (id, amount) => {
       if (result.errors) {
         alert(result.errors[0].message);
       } else {
-        window.location.replace(`../../../listing/?id=${result.id}`);
+        updateCredit();
+        setTimeout(() => {
+          window.location.replace(`../../../listing/?id=${result.id}`);
+        }, 400);
       }
     },
   );

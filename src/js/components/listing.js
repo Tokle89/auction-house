@@ -23,10 +23,10 @@ export const createListing = ({
     "flex-lg-row",
     "flex-column",
   ]);
-
   const listingContent = createContentContainer(media, title, description);
   const listingInfo = createListingInfoContainer(seller, created, bids, id);
   element.append(listingContent, listingInfo);
+
   return element;
 };
 
@@ -39,7 +39,7 @@ const createContentContainer = (media, title, description) => {
   return element;
 };
 
-const createImgContainer = (media, title) => {
+const createImgContainer = async (media, title) => {
   const element = createElement("div", ["img-container"]);
 
   const mainImg = createElement(
@@ -67,27 +67,21 @@ const createImgContainer = (media, title) => {
     ]);
 
     media.slice(1).forEach((img) => {
+      let checkedImg = checkMedia(img);
       const thumbnailImg = createElement(
         "img",
         ["thumbnail"],
         undefined,
         undefined,
         undefined,
-        img,
+        checkedImg,
         title,
       );
 
       thumbnailImg.addEventListener("click", () => {
-        // Store the current main image source
         const currentMainImgSrc = mainImg.src;
-
-        // Set the main image source to the clicked thumbnail's source
         mainImg.src = thumbnailImg.src;
-
-        // Set the clicked thumbnail's source to the stored main image source
         thumbnailImg.src = currentMainImgSrc;
-
-        // Move the clicked thumbnail to the end of the thumbnail container
         thumbnailContainer.append(thumbnailImg);
       });
 
@@ -202,7 +196,7 @@ const createInfoContainer = (created, bids, id) => {
   const fourthP = createElement("p");
 
   if (bids.length > 0) {
-    const LatestBid = bids[bids.length - 1];
+    const LatestBid = bids[0];
     thirdP.append(`By: ${LatestBid.bidderName}`);
     const price = createElement(
       "span",
