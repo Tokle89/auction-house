@@ -3,7 +3,7 @@ import { createListingCard } from "../components/listingCards.js";
 import { createCarouselCard } from "../components/carousel.js";
 import { fetchPopularListings } from "../filters/popular.js";
 import { createListing } from "../components/listing.js";
-import { countDown } from "../utils/countDown.js";
+import { countDown } from "../utils/countDownTimer.js";
 import * as storage from "../storage/index.js";
 import { createProfile } from "../components/profile.js";
 import { getQueryParamId } from "../utils/queryParam.js";
