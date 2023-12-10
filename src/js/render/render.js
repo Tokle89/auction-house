@@ -11,6 +11,7 @@ import * as url from "../api/constant.js";
 import { createMsg } from "../components/listingMsg.js";
 import { createEditModalContent } from "../components/editModal.js";
 import { scrollToListings } from "../utils/scroll.js";
+import { createViewMoreBtn } from "../components/viewMoreBtn.js";
 
 export const renderCards = (url, data) => {
   const cardsContainer = document.querySelector(".cards-container");
@@ -19,8 +20,12 @@ export const renderCards = (url, data) => {
   if (!data) {
     apiCall(url)
       .then((result) => {
-        result.forEach((listing) => {
+        result.forEach((listing, i) => {
           const listingCard = createListingCard(listing);
+          if (i > 9) {
+            console.log(listingCard);
+            listingCard.classList.add("d-none");
+          }
           cardsContainer.append(listingCard);
         });
       })
@@ -28,12 +33,20 @@ export const renderCards = (url, data) => {
         console.log(error);
       });
   } else {
-    data.forEach((listing) => {
+    data.forEach((listing, i) => {
       const listingCard = createListingCard(listing);
+      if (i > 9) {
+        listingCard.classList.add("d-none");
+      }
       cardsContainer.append(listingCard);
       scrollToListings();
     });
   }
+
+  setTimeout(() => {
+    const btn = createViewMoreBtn(cardsContainer.children);
+    cardsContainer.append(btn);
+  }, 500);
 };
 
 export const renderCarousel = () => {
