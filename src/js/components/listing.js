@@ -132,8 +132,8 @@ const createListingInfoContainer = (seller, created, bids, id) => {
   );
 
   const bidInfoContainer = createBidInfoContainer(seller, created, bids, id);
-
-  if (seller.name === storage.get("user").name) {
+  let user = storage.get("user");
+  if (user && seller.name === user.name) {
     const editDropdown = createEditDropdown(id);
     bidInfoContainer.classList.remove("mt-5");
     element.append(h2, timeRemainingContainer, editDropdown, bidInfoContainer);
@@ -210,40 +210,53 @@ const createInfoContainer = (created, bids, id) => {
     fourthP.append("Be the first to bid!");
     fourthP.classList.add("text-secondary", "fw-bold");
   }
-
-  const fundsP = createElement(
-    "p",
-    ["text-secondary", "fw-bold"],
+  const link = createElement(
+    "a",
+    ["text-primary", "fw-bold", "mt-1", "text-decoration-underline", "fs-5"],
     undefined,
-    `Funds: ${storage.get("user").credit} EUR`,
+    "Please login in to bid",
+    `../../../auth/login/`,
   );
 
-  const container = createElement(
-    "div",
-    [
-      "d-flex",
-      "justify-content-between",
-      "align-items-start",
-      "align-items-sm-end",
-      "flex-column",
-      "flex-sm-row",
-    ],
-    [fourthP, fundsP],
-  );
+  element.append(p, secondP, thirdP, fourthP, link);
+  const LoggedId = storage.get("user");
+  if (LoggedId) {
+    const fundsP = createElement(
+      "p",
+      ["text-secondary", "fw-bold"],
+      undefined,
+      `Funds: ${storage.get("user").credit} EUR`,
+    );
 
-  const form = createBidForm(id, bids);
-  const bidsContainer = createElement("div", ["bids-container", "mt-3"]);
-  const button = createElement(
-    "button",
-    ["btn", "btn-white", "border-primary", "view"],
-    undefined,
-    "View All Bids",
-  );
-  button.addEventListener("click", () => {
-    toggleBids(button, bidsContainer, bids);
-  });
+    link.classList.add("d-none");
+    const container = createElement(
+      "div",
+      [
+        "d-flex",
+        "justify-content-between",
+        "align-items-start",
+        "align-items-sm-end",
+        "flex-column",
+        "flex-sm-row",
+      ],
+      [fourthP, fundsP],
+    );
 
-  element.append(p, secondP, thirdP, container, form, button, bidsContainer);
+    const form = createBidForm(id, bids);
+    const bidsContainer = createElement("div", ["bids-container", "mt-3"]);
+    const button = createElement(
+      "button",
+      ["btn", "btn-white", "border-primary", "view"],
+      undefined,
+      "View All Bids",
+    );
+    button.addEventListener("click", () => {
+      toggleBids(button, bidsContainer, bids);
+    });
+
+    element.append(container, form, button, bidsContainer);
+  }
+
   return element;
 };
 

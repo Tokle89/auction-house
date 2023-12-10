@@ -65,7 +65,7 @@ const cardBody = (id, title, endsAt, bids, amount) => {
     "h2",
     ["card-title", "fs-4"],
     undefined,
-    trimText(title, 25),
+    trimText(title, 15),
   );
 
   const paragraph = createElement(

@@ -53,6 +53,7 @@ export const router = () => {
     toggleProfileListings();
   } else if (href.includes("listing")) {
     const id = getQueryParamId("id");
+    console.log(id);
     renderListing(url.BASE + url.LISTINGS + `/${id}` + url.listingsParams);
     renderCards(url.BASE + url.LISTINGS + url.listingsParams);
     editForm.addEventListener("submit", () => handleEditListing(id));
