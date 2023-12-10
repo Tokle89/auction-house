@@ -6,6 +6,7 @@ import { deleteListing } from "../listing/delete.js";
 import { checkMedia } from "../utils/media.js";
 import { handleBid } from "../listing/bid.js";
 import { minBid } from "../utils/bidChecker.js";
+import { findLatestBid } from "../utils/bidChecker.js";
 
 export const createListing = ({
   media,
@@ -196,13 +197,14 @@ const createInfoContainer = (created, bids, id) => {
   const fourthP = createElement("p");
 
   if (bids.length > 0) {
-    const LatestBid = bids[0];
-    thirdP.append(`By: ${LatestBid.bidderName}`);
+    const { bidderName, amount } = findLatestBid(bids);
+
+    thirdP.append(`By: ${bidderName}`);
     const price = createElement(
       "span",
       ["text-danger", "fw-bold"],
       undefined,
-      `${LatestBid.amount} EUR`,
+      `${amount} EUR`,
     );
     fourthP.append(`Amount: `, price);
   } else {

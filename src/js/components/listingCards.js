@@ -2,6 +2,7 @@ import { createElement } from "../utils/createElement.js";
 import { parseDate } from "../utils/parse.js";
 import { checkMedia } from "../utils/media.js";
 import { trimText } from "../utils/trimText.js";
+import { findLatestBid } from "../utils/bidChecker.js";
 
 export const createListingCard = (
   { id, title, bids, endsAt, media },
@@ -78,12 +79,11 @@ const cardBody = (id, title, endsAt, bids, amount) => {
 
   if (bids) {
     if (bids.length > 0) {
-      const lastBid = bids[0];
       const sum = createElement(
         "span",
         ["text-danger", "fw-bold"],
         undefined,
-        `${lastBid.amount} EUR`,
+        `${findLatestBid(bids).amount} EUR`,
       );
       secondParagraph.append(`Current bid: `, sum);
     } else {

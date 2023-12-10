@@ -39,8 +39,12 @@ const filterListings = async (listingArr, id) => {
   } else if (id === "ending") {
     const sortedListings = sortArrayByEnding(listings);
     renderCards(undefined, sortedListings);
-  } else if (id === "popular") {
-    const sortedListings = await fetchPopularListings(listings);
+  } else if (id === "popular" && !listingArr) {
+    const sortedListings = await fetchPopularListings();
+    console.log(sortedListings);
+    renderCards(undefined, sortedListings);
+  } else if (id === "popular" && listingArr) {
+    const sortedListings = await fetchPopularListings(listingArr);
     renderCards(undefined, sortedListings);
   }
 };

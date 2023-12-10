@@ -2,6 +2,7 @@ import { createElement } from "../utils/createElement.js";
 import { parseDate } from "../utils/parse.js";
 import { checkMedia } from "../utils/media.js";
 import { trimText } from "../utils/trimText.js";
+import { findLatestBid } from "../utils/bidChecker.js";
 
 export const createCarouselCard = ({
   id,
@@ -73,12 +74,11 @@ const createTextContainer = (id, title, endsAt, bids, description) => {
     `Ends at: ${parseDate(endsAt)}`,
   );
 
-  const latestBid = bids[0];
   const span = createElement(
     "span",
     ["text-danger", "fw-bold"],
     undefined,
-    `${latestBid.amount} EUR`,
+    `${findLatestBid(bids).amount} EUR`,
   );
   const paragraph3 = createElement("p", undefined, ["Current bid:", span]);
 

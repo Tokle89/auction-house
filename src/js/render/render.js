@@ -40,6 +40,7 @@ export const renderCarousel = () => {
   const carouselContainer = document.querySelector(".carousel-inner");
   carouselContainer.innerHTML = "";
   fetchPopularListings().then((popularListings) => {
+    console.log(popularListings);
     popularListings.forEach((listing, i) => {
       if (i < 3) {
         const carouselCard = createCarouselCard(listing);
