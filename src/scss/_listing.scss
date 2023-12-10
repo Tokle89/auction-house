@@ -6,9 +6,14 @@
   div {
     max-width: 580px;
   }
+
   img {
     max-height: 280px;
     cursor: pointer;
+    padding: 2px;
+  }
+  .thumbnail {
+    max-height: 150px;
   }
 
   .time-remaining-container {
@@ -26,10 +31,6 @@
         margin: 0;
       }
     }
-  }
-
-  .profile-avatar {
-    max-width: 86px;
   }
 
   input {

@@ -11,10 +11,10 @@
     <title>Bootstrap w/ Vite</title>
   </head>
   <body>
-    <header>
+    <header class="border-bottom border-warning">
       <div class="header-container m-auto">
         <nav class="navbar navbar-expand-md bg-white p-0 m-0">
-          <div class="container-fluid pt-2 px-0 shadow">
+          <div class="container-fluid pt-2 px-0">
             <a
               class="navbar-brand fs-2 ps-3 pe-0 py-2 logo text-uppercase"
               href="../../"
@@ -55,8 +55,59 @@
                   </button>
                 </li>
               </ul>
+              <div class="d-flex ms-md-auto p-3" id="profile-btn">
+                <div class="dropdown text-end profile-btn">
+                  <button
+                    class="listing-modal_btn d-block dropdown-toggle show"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="true"
+                  >
+                    <img
+                      src=""
+                      alt=""
+                      class="rounded-circle"
+                      id="profile-btn-img"
+                    />
+                  </button>
+
+                  <ul
+                    class="dropdown-menu dropdown-menu-start dropdown-menu-md-end text-secondary m-0 border border-warning"
+                    data-popper-placement="bottom-start"
+                  >
+                    <li>
+                      <button
+                        type="button"
+                        class="listing-modal_btn text-link py-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#add-listing-modal"
+                      >
+                        <span class="text-primary fw-bold px-2">+</span>Add
+                        listing
+                      </button>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a
+                        class="dropdown-item text-link p-2 text-secondary"
+                        href="./profile/"
+                        >Profile</a
+                      >
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <button
+                        class="dropdown-item listing-modal_btn text-link text-secondary p-2"
+                        id="logout-btn"
+                      >
+                        Sign Out
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               <div
-                class="ms-md-auto justify-content-between justify-content-between-md-end d-flex nav-border px-2 py-3"
+                class="ms-md-auto justify-content-between d-flex px-2 py-3"
+                id="auth-btns"
               >
                 <a href="../login/" class="btn btn-white border-primary px-4"
                   >Login</a
@@ -194,7 +245,7 @@
           </p>
         </div>
 
-        <form class="mx-auto my-5">
+        <form class="mx-auto my-5" id="register-form">
           <div class="mb-3">
             <label for="username" class="form-label">UserName</label>
             <input
@@ -214,9 +265,9 @@
               type="email"
               class="form-control"
               id="email"
-              maxlength="20"
               placeholder="Email must be an @noroff.no or @stud.noroff.no address"
-              pattern="pattern: ^[\w\-.]+@(stud\.)?noroff\.no$"
+              pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
+              required
             />
           </div>
           <div class="mb-3">
@@ -239,12 +290,7 @@
               placeholder="Must be a valid url link"
             />
           </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="remember-me" />
-            <label class="form-check-label" for="remember-me"
-              >Remember me</label
-            >
-          </div>
+
           <button type="submit" class="btn btn-primary">Register</button>
         </form>
       </section>

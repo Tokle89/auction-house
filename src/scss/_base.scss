@@ -1,5 +1,6 @@
 .btn {
   min-width: 129px;
+  max-width: 160px;
 }
 .btn-white {
   background-color: #fff;
@@ -38,8 +39,26 @@ li {
 }
 
 .filter-btn {
-  border: 1px solid $warning;
+  border: 1px solid $secondary;
+  color: $secondary;
+  background: #fff;
   @media (max-width: 450px) {
     min-width: 0px;
+  }
+}
+.filter-btn:hover {
+  border: none;
+  background: #fff;
+  color: $secondary;
+}
+.current-filter-btn {
+  background-color: $secondary;
+  color: #fff;
+  border: 1px solid $secondary;
+}
+
+.modal-body {
+  i {
+    cursor: pointer;
   }
 }

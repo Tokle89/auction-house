@@ -4,13 +4,16 @@
 @import "base";
 @import "auth";
 @import "listing";
+@import "profile";
 
 //header
 .header-container {
   max-width: 1320px;
-
-  .btn {
-    min-width: 160px;
+  .profile-btn {
+    img {
+      width: 40px;
+      height: 40px;
+    }
   }
 }
 
@@ -57,6 +60,16 @@ a {
     .carousel-item-container > * {
       flex: 1;
     }
+
+    img {
+      height: 358px;
+      width: 358px;
+
+      @media (max-width: 560px) {
+        height: 250px;
+        width: 100%;
+      }
+    }
   }
   @media (max-width: 1068px) {
     .carousel-control-next,
@@ -70,25 +83,35 @@ a {
 }
 
 .cards-container {
+  .card > * {
+    flex: 1;
+  }
+  .card-container {
+    @media (max-width: 990px) {
+      max-width: 350px;
+    }
+  }
   .card {
     max-width: 660px;
-    min-height: 300px;
-
+    height: 400px;
+    overflow: hidden;
     .card-body {
       padding: 0px;
     }
 
-    @media (max-width: 560px) {
-      max-width: 350px;
-    }
-
     img {
       height: 100%;
-      object-fit: fill;
     }
-  }
-  .card > * {
-    flex: 1;
+
+    @media (max-width: 990px) {
+      max-width: 350px;
+
+      img {
+        height: 215px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 5px;
+      }
+    }
   }
 }
 
@@ -124,4 +147,12 @@ footer {
 
 .profile-avatar {
   max-width: 86px;
+}
+//general
+li {
+  min-height: 0px;
+}
+
+.is-invalid {
+  border: 2px solid $danger;
 }
