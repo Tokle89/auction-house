@@ -39,7 +39,7 @@ const createContentContainer = (media, title, description) => {
   return element;
 };
 
-const createImgContainer = async (media, title) => {
+const createImgContainer = (media, title) => {
   const element = createElement("div", ["img-container"]);
 
   const mainImg = createElement(
