@@ -4,17 +4,22 @@ import { parseDate } from "./parse.js";
 
 const authBtns = document.getElementById("auth-btns");
 const profileBtn = document.getElementById("profile-btn");
+const listingBtns = document.querySelectorAll(".listing-btn");
 
 export const toggleHeaderBtns = () => {
   const token = localStorage.getItem("token");
+  const listingBtnsArr = Object.values(listingBtns);
 
   if (token) {
     authBtns.classList.add("d-none");
     profileBtn.classList.remove("d-none");
+    listingBtnsArr.forEach((btn) => btn.classList.remove("d-none"));
+
     createProfileBtnImg();
   } else {
     authBtns.classList.remove("d-none");
     profileBtn.classList.add("d-none");
+    listingBtnsArr.forEach((btn) => btn.classList.add("d-none"));
   }
 };
 

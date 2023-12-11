@@ -1,7 +1,6 @@
 import { createElement } from "../utils/createElement.js";
 
 export const createViewMoreBtn = (listings) => {
-  console.log(listings);
   const btn = createElement(
     "button",
     ["btn", "btn-primary", "mt-3", "col-12", "m-auto"],

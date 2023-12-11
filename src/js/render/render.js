@@ -23,7 +23,6 @@ export const renderCards = (url, data) => {
         result.forEach((listing, i) => {
           const listingCard = createListingCard(listing);
           if (i > 9) {
-            console.log(listingCard);
             listingCard.classList.add("d-none");
           }
           cardsContainer.append(listingCard);
@@ -53,7 +52,6 @@ export const renderCarousel = () => {
   const carouselContainer = document.querySelector(".carousel-inner");
   carouselContainer.innerHTML = "";
   fetchPopularListings().then((popularListings) => {
-    console.log(popularListings);
     popularListings.forEach((listing, i) => {
       if (i < 3) {
         const carouselCard = createCarouselCard(listing);
@@ -96,7 +94,6 @@ export const renderProfile = (profileUrl) => {
 
   apiCall(profileUrl, fetchOptions)
     .then((result) => {
-      console.log(result);
       const profile = createProfile(result);
       profileContainer.append(profile);
     })
@@ -151,7 +148,6 @@ export const renderProfileListings = (value) => {
     newUrl = url.BASE + url.PROFILE + `/${id}` + url.profileParams;
     apiCall(newUrl, fetchOptions)
       .then(({ wins }) => {
-        console.log(wins);
         if (wins.length > 0) {
           wins.forEach((listing) => {
             apiCall(

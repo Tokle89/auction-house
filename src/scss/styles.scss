@@ -55,7 +55,7 @@ a {
 .carousel {
   border: solid $warning;
   border-width: 1px 0px 1px 0px;
-
+  max-height: 600px;
   .carousel-item {
     .carousel-item-container {
       max-width: 900px;
