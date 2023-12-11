@@ -1,0 +1,32 @@
+.carousel {
+  border: solid $warning;
+  border-width: 1px 0px 1px 0px;
+  max-height: 600px;
+  .carousel-item {
+    .carousel-item-container {
+      max-width: 900px;
+    }
+    .carousel-item-container > * {
+      flex: 1;
+    }
+
+    img {
+      height: 358px;
+      width: 358px;
+
+      @media (max-width: 560px) {
+        height: 250px;
+        width: 100%;
+      }
+    }
+  }
+  @media (max-width: 1068px) {
+    .carousel-control-next,
+    .carousel-control-prev {
+      top: 90%;
+    }
+    .carousel-item-container {
+      margin-bottom: 30px;
+    }
+  }
+}

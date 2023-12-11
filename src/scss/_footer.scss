@@ -1,0 +1,16 @@
+footer {
+  p,
+  a {
+    margin-bottom: 5px;
+  }
+
+  @media (max-width: 560px) {
+    .logo-container {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    div {
+      justify-content: center;
+    }
+  }
+}

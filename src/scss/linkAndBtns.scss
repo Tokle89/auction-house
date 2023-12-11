@@ -1,0 +1,72 @@
+a {
+  text-decoration: none;
+}
+
+.btn {
+  min-width: 129px;
+  max-width: 160px;
+}
+.btn-white {
+  background-color: #fff;
+  color: $primary;
+}
+.btn-secondary {
+  color: #fff;
+}
+.btn:hover {
+  transition: all ease-in 0.1s;
+}
+
+.btn-primary:hover {
+  background: #fff;
+  color: $primary;
+}
+
+.btn-secondary:hover,
+.current-btn {
+  background: #fff;
+  color: $secondary;
+}
+
+.btn-white:hover {
+  background: $primary;
+  color: #fff;
+}
+
+.text-link:hover {
+  font-weight: bold;
+  font-size: large;
+  transition: all ease-in 0.1s;
+}
+
+.filter-btn {
+  border: 1px solid $secondary;
+  color: $secondary;
+  background: #fff;
+  @media (max-width: 450px) {
+    min-width: 0px;
+  }
+}
+.filter-btn:hover {
+  border: none;
+  color: $secondary;
+}
+.current-filter-btn {
+  background-color: $secondary;
+  color: #fff;
+  border: 1px solid $secondary;
+}
+
+.modal-body {
+  i {
+    cursor: pointer;
+  }
+}
+
+.listing-modal_btn {
+  all: unset;
+}
+
+.listing-modal_btn:focus {
+  outline: revert;
+}
