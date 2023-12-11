@@ -1,5 +1,19 @@
 import { createElement } from "../utils/createElement.js";
 
+/**
+ *
+ * Takes the modal edit form, and  fils the form inputs with the given data.
+ * @param {object} param0
+ * @param {string} param0.title - The title of the listing.
+ * @param {string} param0.description - The description of the listing.
+ * @param {array} param0.tags - The tags of the listing.
+ * @param {array} param0.media - The media of the listing.
+ * @param {string} param0.endsAt - The end date of the listing.
+ *
+ * @example
+ * //Example usage:
+ * const element = createEditModalContent({ title, description, tags, media, endsAt });
+ */
 export const createEditModalContent = ({
   title,
   description,

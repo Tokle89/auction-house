@@ -4,6 +4,54 @@ import { checkMedia } from "../utils/media.js";
 import { trimText } from "../utils/trimText.js";
 import { findLatestBid } from "../utils/bidChecker.js";
 
+/**
+ * Creates a listing card.
+ * @param {object} param0  - The object containing the listing data.
+ * @param {number} param0.id - The id of the listing.
+ * @param {string} param0.title - The title of the listing.
+ * @param {array} param0.bids - The bids of the listing.
+ * @param {string} param0.endsAt - The end date of the listing.
+ * @param {array} param0.media - The media of the listing.
+ * @param {number} param0.amount - The amount of the listing.
+ * @param {number} amount  - The price of the listing.
+ * @returns {HTMLDivElement} - The listing card.
+ *
+ * @example
+ * //Example usage:
+ * createListingCard({
+ * id: 1,
+ * title: "test",
+ * bids: [
+ * {
+ * amount: 100,
+ * },
+ * ],
+ * endsAt: "2021-10-10T10:00:00.000Z",
+ * media: [
+ * {
+ * url: "https://via.placeholder.com/150",
+ * },
+ * ],
+ * }, 100);
+ * //Returns:
+ * <div class="col py-4 d-flex, justify-content-center card-container">
+ * <div class="card d-flex flex-column justify-content-center flex-lg-row border border-warning">
+ * <div class="img-container">
+ * <img src="https://via.placeholder.com/150" alt="test">
+ * </div>
+ * <div class="card-body d-flex flex-column justify-content-center align-items-center">
+ * <div class="m-auto p-3">
+ * <h2 class="card-title fs-4">test</h2>
+ * <p class="card-text">Ends at: 10/10/2021</p>
+ * <p class="card-text">Current bid: 100 EUR</p>
+ * <a href="../../../listing/index.html?id=1" class="btn btn-secondary mt-1">View</a>
+ * </div>
+ * </div>
+ * </div>
+ * </div>
+ *
+ *
+ */
 export const createListingCard = (
   { id, title, bids, endsAt, media },
   amount,

@@ -1,5 +1,14 @@
 import { sendListing } from "./index.js";
-import { verifyImg } from "../utils/media.js";
+
+/**
+ *  handles the edit listing form, and sends the form data to the sendListing function.
+ * verifies the media input, and sends null if the input is empty.
+ * @param {Number} id
+ * @example
+ * //Example usage:
+ * handleEditListing(id);
+ *
+ */
 export const handleEditListing = (id) => {
   event.preventDefault();
 
@@ -10,9 +19,12 @@ export const handleEditListing = (id) => {
   const form = document.getElementById("edit-listing-form");
   const mediaGallery = form.querySelectorAll(`input[name="media"]:enabled`);
 
-  mediaGallery.forEach((media) => {
-    if (media.value !== "") {
-      mediaArr.push(verifyImg(media.value));
+  mediaGallery.forEach((input) => {
+    if (input.value !== "") {
+      mediaArr.push(input.value);
+    } else {
+      input.disabled = true;
+      console.log(input);
     }
   });
 
@@ -21,7 +33,7 @@ export const handleEditListing = (id) => {
   }
 
   const tagsArr = tags.value.replace(/\s+/g, "").split(",");
-  console.log(id);
+
   sendListing(
     "PUT",
     id,

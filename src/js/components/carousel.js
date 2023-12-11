@@ -4,6 +4,24 @@ import { checkMedia } from "../utils/media.js";
 import { trimText } from "../utils/trimText.js";
 import { findLatestBid } from "../utils/bidChecker.js";
 
+/**
+ *  Creates a carousel card.
+ * @param {Object } param0 - object containing the listing data.
+ * @param {number} param0.id - The id of the listing.
+ * @param {string} param0.title - The title of the listing.
+ * @param {string} param0.endsAt - The end date of the listing.
+ * @param {Array} param0.bids - The bids of the listing.
+ * @param {string} param0.description - The description of the listing.
+ * @param {Array} param0.media - The media of the listing.
+ *
+ * @returns  {HTMLObjectElement} - The created element.
+ *
+ * @example
+ * //Example usage:
+ * const element = createCarouselCard({ id, title, endsAt, bids, description, media });
+ *
+ */
+
 export const createCarouselCard = ({
   id,
   title,
@@ -38,6 +56,17 @@ export const createCarouselCard = ({
   return element;
 };
 
+/**
+ *  Creates a carousel card image.
+ * @param {url} media - The url of the image.
+ * @param {string} title - The title of the listing.
+ * @returns {HTMLObjectElement} - The created element.
+ *
+ * @example
+ * //Example usage:
+ * const element = createCarouselCardImg(media, title);
+ *
+ */
 const createCarouselCardImg = (media, title) => {
   const element = createElement(
     "img",
@@ -52,6 +81,19 @@ const createCarouselCardImg = (media, title) => {
   return element;
 };
 
+/**
+ *  Creates a carousel card text container.
+ * @param {number} id
+ * @param {string} title
+ * @param {string} endsAt
+ * @param {array} bids
+ * @param {string} description
+ * @returns   {HTMLObjectElement} - The created element.
+ *
+ * @example
+ * //Example usage:
+ * const element = createTextContainer(id, title, endsAt, bids, description);
+ */
 const createTextContainer = (id, title, endsAt, bids, description) => {
   const element = createElement("div", [
     "p-4",

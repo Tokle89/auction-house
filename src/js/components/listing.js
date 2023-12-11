@@ -8,6 +8,22 @@ import { handleBid } from "../listing/bid.js";
 import { minBid } from "../utils/bidChecker.js";
 import { findLatestBid } from "../utils/bidChecker.js";
 
+/**
+ * creates a listing element with the given data.
+ * @param {object} param0
+ * @param {array} param0.media - The media of the listing.
+ * @param {string} param0.title - The title of the listing.
+ * @param {string} param0.description - The description of the listing.
+ * @param {object} param0.seller - The seller of the listing.
+ * @param {string} param0.created - The creation date of the listing.
+ * @param {array} param0.bids - The bids of the listing.
+ * @param {number} param0.id - The id of the listing.
+ * @returns  {HTMLObjectElement} - The created element.
+ *
+ * @example
+ * //Example usage:
+ * const element = createListing({ media, title, description, seller, created, bids, id });
+ */
 export const createListing = ({
   media,
   title,
@@ -31,6 +47,17 @@ export const createListing = ({
   return element;
 };
 
+/**
+ *  Creates a listing content container for the listing.
+ * @param {array} media
+ * @param {string} title
+ * @param {string} description
+ * @returns  {HTMLObjectElement} - The created element.
+ *
+ * @example
+ * //Example usage:
+ * const element = createContentContainer(media, title, description);
+ */
 const createContentContainer = (media, title, description) => {
   const element = createElement("div", ["listing-content", "container"]);
   const imgContainer = createImgContainer(media, title);
@@ -40,6 +67,16 @@ const createContentContainer = (media, title, description) => {
   return element;
 };
 
+/**
+ *  Creates a listing image container for the listing. If there are more than one image, it creates a thumbnail container, and adds a event listener to the images.
+ * @param {array} media
+ * @param {string} title
+ * @returns  {HTMLObjectElement} - The created element.
+ *
+ * @example
+ * //Example usage:
+ * const element = createImgContainer(media, title);
+ */
 const createImgContainer = (media, title) => {
   const element = createElement("div", ["img-container"]);
 
@@ -95,6 +132,16 @@ const createImgContainer = (media, title) => {
   return element;
 };
 
+/**
+ *  Creates a listing text container for the listing.
+ * @param {string} title
+ * @param {string} description
+ * @returns  {HTMLObjectElement} - The created element.
+ *
+ * @example
+ * //Example usage:
+ * const element = createTextContainer(title, description);
+ */
 const createTextContainer = (title, description) => {
   const element = createElement("div", ["text-container", "p-2"]);
 
@@ -106,6 +153,18 @@ const createTextContainer = (title, description) => {
   return element;
 };
 
+/**
+ *  Creates a listing info container for the listing.
+ * @param {object} seller
+ * @param {string} created
+ * @param {array} bids
+ * @param {number} id
+ * @returns  {HTMLObjectElement} - The created element.
+ *
+ * @example
+ * //Example usage:
+ * const element = createListingInfoContainer(seller, created, bids, id);
+ */
 const createListingInfoContainer = (seller, created, bids, id) => {
   const element = createElement("div", ["listing-info", "container"]);
 
@@ -145,6 +204,18 @@ const createListingInfoContainer = (seller, created, bids, id) => {
   return element;
 };
 
+/**
+ *  Creates a time container for each time unit, using the given class name and text.
+ * @param {string} className
+ * @param {string} text
+ * @returns  {HTMLObjectElement} - The created element.
+ *
+ * @example
+ * //Example usage:
+ * const element = createTimeContainer(className, text);
+ *
+ *
+ */
 const createTimeContainer = (className, text) => {
   const element = createElement("div", [
     "bg-danger",
@@ -163,6 +234,18 @@ const createTimeContainer = (className, text) => {
   return element;
 };
 
+/**
+ *  Creates a bid info container for the listing.
+ * @param {object} seller
+ * @param {string} created
+ * @param {array} bids
+ * @param {number} id
+ * @returns  {HTMLObjectElement} - The created element.
+ *
+ * @example
+ * //Example usage:
+ * const element = createBidInfoContainer(seller, created, bids, id);
+ */
 const createBidInfoContainer = (seller, created, bids, id) => {
   const element = createElement("div", [
     "mt-5",
@@ -183,6 +266,20 @@ const createBidInfoContainer = (seller, created, bids, id) => {
   return element;
 };
 
+/**
+ *  Creates a info container for the listing.
+ * if there are bids, it creates a bids container, and a button to toggle the bids container, else it creates placeholder text.
+ *  if the user is logged in, it creates a bid form, and a button to toggle the bids container, else it creates link to the login page.
+ *
+ * @param {string} created
+ * @param {array} bids
+ * @param {number} id
+ * @returns  {HTMLObjectElement} - The created element.
+ *
+ * @example
+ * //Example usage:
+ * const element = createInfoContainer(created, bids, id);
+ */
 const createInfoContainer = (created, bids, id) => {
   const element = createElement("div", ["info-container"]);
 
@@ -262,6 +359,16 @@ const createInfoContainer = (created, bids, id) => {
   return element;
 };
 
+/**
+ *  Creates a bid form for the listing, and adds a event listener to the form.
+ * @param {number} id
+ * @param {array} bid
+ * @returns {HTMLObjectElement} - The created element.
+ *
+ * @example
+ * //Example usage:
+ * const element = createBidForm(id, bid);
+ */
 const createBidForm = (id, bid) => {
   const element = createElement("form", [
     "d-flex",
@@ -291,6 +398,18 @@ const createBidForm = (id, bid) => {
   return element;
 };
 
+/**
+ *  Creates a profile container for the listing, based on the seller object.
+ * @param {object} param0
+ * @param {string} param0.name
+ * @param {string} param0.email
+ * @param {url} param0.avatar
+ * @returns  {HTMLObjectElement} - The created element.
+ * @example
+ * //Example usage:
+ * const element = createProfileContainer({ name, email, avatar });
+ *
+ */
 const createProfileContainer = ({ name, email, avatar }) => {
   const element = createElement(
     "a",
@@ -317,6 +436,14 @@ const createProfileContainer = ({ name, email, avatar }) => {
   return element;
 };
 
+/**
+ *  Creates a edit dropdown container for the listing, that contains a edit and delete button. Edit button opens a modal, delete button deletes the listing.
+ * @param {number} id
+ * @returns  {HTMLObjectElement} - The created element.
+ * @example
+ * //Example usage:
+ * const element = createEditDropdown(id);
+ */
 const createEditDropdown = (id) => {
   const element = createElement("div", ["dropdown", "mb-2", "mt-5"]);
   element.id = "edit-dropdown";

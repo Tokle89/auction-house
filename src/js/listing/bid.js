@@ -3,6 +3,14 @@ import * as url from "../api/constant.js";
 import * as storage from "../storage/index.js";
 import { updateCredit } from "../utils/credits/credits.js";
 
+/**
+ *  Adds an event listener to the bid form, and calls the handleBid function when the form is submitted.
+ * and sends the form data to the sendBid function.
+ * @param {number} id
+ * @example
+ * //Example usage:
+ * bidForm(id);
+ */
 export const handleBid = (id) => {
   event.preventDefault();
   const [amount] = event.target.elements;
@@ -10,6 +18,15 @@ export const handleBid = (id) => {
   sendBid(id, Number(amount.value));
 };
 
+/**
+ *  Sends the  listing bid to the backend, and redirects the user to the listing page.
+ * updates the user credits, and shows an alert if the bid is invalid.
+ * @param {number} id
+ * @param {number} amount
+ * @example
+ * //Example usage:
+ * sendBid(id, amount);
+ */
 const sendBid = (id, amount) => {
   const fetchOptions = {
     method: "POST",

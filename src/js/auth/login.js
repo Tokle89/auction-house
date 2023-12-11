@@ -2,6 +2,9 @@ import { apiCall } from "../api/api.js";
 import * as url from "../api/constant.js";
 import * as storage from "../storage/index.js";
 
+/**
+ * Handles the login form submission.
+ */
 export const handleLogin = () => {
   event.preventDefault();
 
@@ -17,6 +20,10 @@ export const handleLogin = () => {
   loginUser(email, password);
 };
 
+/**
+ * Checks if the user has previously checked the "Remember me" checkbox
+ * and if so, fills in the login form with the saved credentials.
+ */
 export const loginCredentials = () => {
   const loginCred = storage.get("loginCred");
 
@@ -27,6 +34,28 @@ export const loginCredentials = () => {
   }
 };
 
+/**
+ *  Makes an API call to the given URL with the given options and returns the result as a JSON object.
+ * And saves the token and user data in the local storage.
+ * Redirects the user to the profile page.
+ *
+ * If there are errors, an alert is shown to the user  with the error message.
+ *
+ * @param {HTMLInputElement} email - The email input field.
+ * @param {HTMLInputElement} password - The password input field.
+ *
+ * @example
+ * //Example usage:
+ * const fetchOptions = {
+ * method: "POST",
+ * headers: {
+ * "Content-Type": "application/json",
+ * },
+ * body: JSON.stringify({ email: email.value, password: password.value }),
+ * };
+ *
+ * loginUser(email, password)
+ */
 const loginUser = (email, password) => {
   const fetchOptions = {
     method: "POST",

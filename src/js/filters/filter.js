@@ -7,6 +7,14 @@ import { sortArrayByCreated } from "./latest.js";
 import { sortArrayByEnding } from "./ending.js";
 import { fetchPopularListings } from "./popular.js";
 
+/**
+ *  Adds event listeners to the filter buttons. the event listeners will filter the listings based on the button id. and then render the filtered listings.
+ * and then scroll to the listings, and then toggle the button class.
+ * @param {array} listingArr
+ * @example
+ * //Example usage:
+ * filterBtns(listingArr);
+ */
 export const filterBtns = (listingArr) => {
   const filterBtns = document.querySelector(".filter-btn-group");
   const btnsArr = Object.values(filterBtns.children);
@@ -24,6 +32,15 @@ export const filterBtns = (listingArr) => {
   });
 };
 
+/**
+ *  Filters the listings based on the button id, and then renders the filtered listings with the filter functions.
+ * @param {array} listingArr
+ * @param {id} id
+ * @example
+ * //Example usage:
+ * filterListings(listingArr, id);
+ *
+ */
 const filterListings = async (listingArr, id) => {
   let listings;
 

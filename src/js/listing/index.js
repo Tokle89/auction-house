@@ -1,6 +1,22 @@
 import * as storage from "../storage/index.js";
 import * as url from "../api/constant.js";
 import { apiCall } from "../api/api.js";
+
+/**
+ *  Sends a listing to the backend, and redirects the user to the listing page. Handles both the create and edit listing forms.
+ *  shows an alert to the user if something goes wrong.
+ * @param {string} method
+ * @param {number} id
+ * @param {string} title
+ * @param {string} description
+ * @param {Array} tags
+ * @param {string} endsAt
+ * @param {Array} media
+ * @example
+ * //Example usage:
+ * sendListing(method, id, title, description, tags, endsAt, media);
+ */
+
 export const sendListing = (
   method,
   id,
