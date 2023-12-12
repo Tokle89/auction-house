@@ -15,16 +15,16 @@
  - Fully responsive
  - Noroff Auction API
 
-##Built with
+## Built with
 - Vanilla javascript
 - Bootstrap 5
 - Sass/scss
 - Html 5
 - Vite
  
-##Getting started
+## Getting started
 
-###Installing
+### Installing
 
 1 Clone the repo:
 ```bash
@@ -62,10 +62,10 @@ npm run lint
 npm run lint-fix
 ```
 
-###Contributing
+### Contributing
 If you would like to contribute to the project, make sure to open a pull request so code can be reviewed, or create an issue for the problem you are experiencing or a feature you would like to see added.
 
-##Contact
+## Contact
 if you would like to get in touch, please use the following methods:
 
 [My Linkedin page](https://www.linkedin.com/in/fredrik-tokle-0994a023b/)
