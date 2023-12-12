@@ -1,6 +1,14 @@
 import { sendListing } from "./index.js";
 
-export const handleSubmitListing = (event) => {
+/**
+ * handles the create listing form, and sends the form data to the sendListing function.
+ * verifies the media input, and sends null if the input is empty.
+ * @example
+ * //Example usage:
+ * handleSubmitListing();
+ *
+ */
+export const handleSubmitListing = () => {
   event.preventDefault();
 
   const [title, description, tags, endsAt] = event.target.elements;

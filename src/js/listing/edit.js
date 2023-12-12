@@ -24,7 +24,6 @@ export const handleEditListing = (id) => {
       mediaArr.push(input.value);
     } else {
       input.disabled = true;
-      console.log(input);
     }
   });
 

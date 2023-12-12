@@ -1,3 +1,20 @@
+/**
+ * Create Html Element with optional classes, children, text, link, src, alt;
+ *
+ * @param {string} tagName
+ * @param {array} classes
+ * @param {array} children
+ * @param {string} text
+ * @param {url} link
+ * @param {url} src
+ * @param {string} alt
+ * @returns {HTMLElement}
+ * @example
+ * //Example usage:
+ * createElement("div", ["container"], undefined, "Hello World");
+ * returns <div class="container">Hello World</div>
+ */
+
 export const createElement = (
   tagName,
   classes,

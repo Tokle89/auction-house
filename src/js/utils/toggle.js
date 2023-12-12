@@ -1,12 +1,19 @@
 import { createProfileBtnImg } from "../components/profile.js";
 import { createElement } from "./createElement.js";
 import { parseDate } from "./parse.js";
+import { handleSubmitListing } from "../listing/post.js";
 
 const authBtns = document.getElementById("auth-btns");
 const profileBtn = document.getElementById("profile-btn");
 const listingBtns = document.querySelectorAll(".listing-btn");
 
-export const toggleHeaderBtns = () => {
+/**
+ * Toggles the header buttons depending on if the user is logged in or not.
+ * @example
+ * //Example usage:
+ * toggleHeaderBtns();
+ */
+export const toggleBtns = () => {
   const token = localStorage.getItem("token");
   const listingBtnsArr = Object.values(listingBtns);
 
@@ -23,6 +30,45 @@ export const toggleHeaderBtns = () => {
   }
 };
 
+/**
+ * Toggles the class "active" on the given button, and removes the class from the other buttons.
+ * @param {string} id
+ * @param {string} containerClass
+ * @param {string} childrenClass
+ * @example
+ * //Example usage:
+ * toggleBtnClass("bids", ".filter-btn-container", "current");
+ */
+export const toggleBtnClass = (id, containerClass, childrenClass) => {
+  const btnContainer = document.querySelector(containerClass);
+  const btnArray = Object.values(btnContainer.children);
+  btnArray.forEach((btn) => {
+    if (btn.id === id) {
+      btn.classList.add(childrenClass);
+    } else {
+      btn.classList.remove(childrenClass);
+    }
+  });
+};
+
+export const toggleListingBtn = () => {
+  const user = localStorage.getItem("user");
+  if (user) {
+    const listingForm = document.getElementById("listing-form");
+    listingForm.addEventListener("submit", handleSubmitListing);
+  }
+};
+
+/**
+ * Toggles the bids container, and displays the bids if the button has the class "view".
+ * and hides the bids if the button does not have the class "view".
+ * @param {HTMLButtonElement} button
+ * @param {HTMLObjectElement} bidsContainer
+ * @param {Array} bids
+ * @example
+ * //Example usage:
+ * toggleBids(button, bidsContainer, bids);
+ */
 export const toggleBids = (button, bidsContainer, bids) => {
   if (button.classList.contains("view")) {
     bids
@@ -68,16 +114,4 @@ export const toggleBids = (button, bidsContainer, bids) => {
     button.textContent = "View All Bids";
     button.classList.add("view");
   }
-};
-
-export const toggleBtnClass = (id, containerClass, childrenClass) => {
-  const btnContainer = document.querySelector(containerClass);
-  const btnArray = Object.values(btnContainer.children);
-  btnArray.forEach((btn) => {
-    if (btn.id === id) {
-      btn.classList.add(childrenClass);
-    } else {
-      btn.classList.remove(childrenClass);
-    }
-  });
 };

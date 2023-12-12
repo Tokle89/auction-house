@@ -1,5 +1,15 @@
 import { createElement } from "./createElement.js";
 
+/**
+ *  Takes a date string and displays a countdown timer.
+ * The timer is updated every second, and when the timer reaches 0, a message is displayed.
+ * @param {string} date
+ * @example
+ * //Example usage:
+ * countDown(2022/01/01);
+ *
+ *
+ */
 export const countDown = (date) => {
   const countdownInterval = setInterval(() => {
     const countdownDate = new Date(date).getTime();
@@ -23,6 +33,16 @@ export const countDown = (date) => {
   }, 1000);
 };
 
+/**
+ * Updates the countdown timer with the given values from countDown().
+ * @param {number} days
+ * @param {number} hours
+ * @param {number} minutes
+ * @param {number} seconds
+ * @example
+ * //Example usage:
+ * updateTime(12, 23, 10, 43);
+ */
 const updateTime = (days, hours, minutes, seconds) => {
   const dayContainer = document.querySelector(".days-container");
   const hourContainer = document.querySelector(".hours-container");
@@ -35,6 +55,12 @@ const updateTime = (days, hours, minutes, seconds) => {
   secondContainer.innerText = seconds;
 };
 
+/**
+ * Displays a message when the auction is over.
+ * @example
+ * //Example usage:
+ * displayMsg();
+ */
 const displayMsg = () => {
   const container = document.querySelector(".time-remaining-container");
   container.innerHTML = "";
@@ -47,6 +73,12 @@ const displayMsg = () => {
   container.append(h2);
 };
 
+/**
+ * Adjusts the content when the auction is over.
+ * @example
+ * //Example usage:
+ * adjustContent();
+ */
 const adjustContent = () => {
   const infoContainer = document.querySelector(".info-container");
   const div = infoContainer.querySelector("div");
