@@ -3,7 +3,7 @@
 
  [Auction House](https://rococo-churros-9ca4d1.netlify.app/) Is and Auction house web app where users can look trough and bid on items auctioned by other users. And put their own items up for auction.
 
- ##Description
+ ## Description
  
  Auction House is an online auction house where users can add items to be bid on and bid on items other users have put up for auction. When a new user joins the website, they are given 1000 credits to use on the site. They can get credits by selling items and use credit by buying items. Non-registered users can search through the listings, but only registered users can make bids on listings.
 
