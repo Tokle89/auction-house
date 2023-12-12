@@ -7,7 +7,7 @@
  
  Auction House is an online auction house where users can add items to be bid on and bid on items other users have put up for auction. When a new user joins the website, they are given 1000 credits to use on the site. They can get credits by selling items and use credit by buying items. Non-registered users can search through the listings, but only registered users can make bids on listings.
 
- #### The main features are :
+ ### The main features are :
  - Register/login system
  - View/filter/search trough listings when not logged in
  - Create/update/delete your listings
@@ -15,7 +15,7 @@
  - Fully responsive
  - Noroff Auction API
 
-## Built with
+### Built with
 - Vanilla javascript
 - Bootstrap 5
 - Sass/scss
@@ -23,6 +23,7 @@
 - Vite
  
 ## Getting started
+
 
 ### Installing
 
