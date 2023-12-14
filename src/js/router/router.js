@@ -15,9 +15,11 @@ import { toggleProfileListings } from "../utils/toggleProfileListings.js";
 import { handleEditListing } from "../listing/edit.js";
 import { filterBtns } from "../filters/filter.js";
 import { search } from "../search/search.js";
+import { handleAvatarEdit } from "../utils/avatar.js";
 const registerForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
 const editForm = document.getElementById("edit-listing-form");
+const avatarForm = document.getElementById("avatar-form");
 
 /**
  * Handles the routing depending on the url, and calls the appropriate functions.
@@ -43,8 +45,8 @@ export const router = () => {
     }
     renderProfile(url.BASE + url.PROFILE + `/${id}` + url.profileParams);
     renderProfileListings("listings");
-
     toggleProfileListings();
+    avatarForm.addEventListener("submit", handleAvatarEdit);
   } else if (href.includes("listing")) {
     const id = getQueryParamId("id");
     renderListing(url.BASE + url.LISTINGS + `/${id}` + url.listingsParams);

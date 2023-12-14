@@ -145,7 +145,7 @@ const createImgContainer = (media, title) => {
 const createTextContainer = (title, description) => {
   const element = createElement("div", ["text-container", "p-2"]);
 
-  const h1 = createElement("h2", undefined, undefined, title);
+  const h1 = createElement("h1", ["fs-2"], undefined, title);
   const p = createElement("p", ["text-dark"], undefined, description);
 
   element.append(h1, p);
@@ -413,14 +413,14 @@ const createBidForm = (id, bid) => {
 const createProfileContainer = ({ name, email, avatar }) => {
   const element = createElement(
     "a",
-    ["profile-info", "d-flex", "align-items-center"],
+    ["profile-info", "d-flex", "align-items-center", "flex-wrap"],
     undefined,
     undefined,
     `../profile/index.html?id=${name}`,
   );
   const img = createElement(
     "img",
-    ["profile-avatar", "rounded-circle"],
+    ["profile-avatar", "rounded-circle", "me-4"],
     undefined,
     undefined,
     undefined,
@@ -429,7 +429,7 @@ const createProfileContainer = ({ name, email, avatar }) => {
   );
   const h3 = createElement("h3", ["fs-5", "fw-bold", "mb-o"], undefined, name);
   const p = createElement("p", ["text-dark"], undefined, email);
-  const div = createElement("div", ["ps-4"], [h3, p]);
+  const div = createElement("div", undefined, [h3, p]);
 
   element.append(img, div);
 

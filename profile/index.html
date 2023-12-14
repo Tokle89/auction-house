@@ -256,6 +256,51 @@
           </div>
         </div>
       </div>
+      <div
+        class="modal fade"
+        id="edit-avatar-modal"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title fs-5" id="staticBackdropLabel">
+                Edit avatar
+              </h2>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form class="mx-auto" id="avatar-form" method="post">
+                <label for="media" class="form-label">Media</label>
+                <div>
+                  <input
+                    type="url"
+                    name="media"
+                    class="form-control"
+                    id="media"
+                    placeholder="Must be a valid url link"
+                    pattern="https://.*"
+                    required
+                    title="must be a valid Url"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">
+                  Publish
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
       <section class="profile-section">
         <div
           class="container profile-info d-flex align-items-center justify-content-center"

@@ -6,28 +6,30 @@ a {
   min-width: 129px;
   max-width: 160px;
 }
-.btn-white {
-  background-color: #fff;
-  color: $primary;
-}
-.btn-secondary {
-  color: #fff;
-}
 .btn:hover {
   transition: all ease-in 0.1s;
 }
-
+.btn-white,
 .btn-primary:hover {
-  background: #fff;
+  background-color: #fff;
   color: $primary;
 }
 
+.btn-secondary {
+  color: #fff;
+}
+
 .btn-secondary:hover,
-.current-btn {
+.current-btn,
+.filter-btn {
   background: #fff;
   color: $secondary;
 }
 
+.filter-btn,
+.current-filter-btn {
+  border: 1px solid $secondary;
+}
 .btn-white:hover {
   background: $primary;
   color: #fff;
@@ -37,12 +39,10 @@ a {
   font-weight: bold;
   font-size: large;
   transition: all ease-in 0.1s;
+  color: $secondary;
 }
 
 .filter-btn {
-  border: 1px solid $secondary;
-  color: $secondary;
-  background: #fff;
   @media (max-width: 450px) {
     min-width: 0px;
   }
@@ -50,11 +50,14 @@ a {
 .filter-btn:hover {
   border: none;
   color: $secondary;
+  background: #fff;
+}
+
+.current-filter-btn {
+  color: #fff;
 }
 .current-filter-btn {
   background-color: $secondary;
-  color: #fff;
-  border: 1px solid $secondary;
 }
 
 .modal-body {
@@ -69,4 +72,10 @@ a {
 
 .listing-modal_btn:focus {
   outline: revert;
+}
+
+.edit-btn {
+  color: $secondary;
+  font-size: 2rem;
+  height: 39px;
 }
