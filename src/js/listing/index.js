@@ -46,7 +46,7 @@ export const sendListing = (
     if (id) {
       newUrl = url.BASE + url.LISTINGS + `/${id}`;
     }
-
+    console.log(fetchOptions.body);
     apiCall(newUrl, fetchOptions).then((result) => {
       console.log(result);
       if (result.errors) {

@@ -44,10 +44,10 @@ export const countDown = (date) => {
  * updateTime(12, 23, 10, 43);
  */
 const updateTime = (days, hours, minutes, seconds) => {
-  const dayContainer = document.querySelector(".days-container");
-  const hourContainer = document.querySelector(".hours-container");
-  const minuteContainer = document.querySelector(".min-container");
-  const secondContainer = document.querySelector(".sec-container");
+  const dayContainer = document.querySelector(".days-container") || {};
+  const hourContainer = document.querySelector(".hours-container") || {};
+  const minuteContainer = document.querySelector(".min-container") || {};
+  const secondContainer = document.querySelector(".sec-container") || {};
 
   dayContainer.innerText = days;
   hourContainer.innerText = hours;

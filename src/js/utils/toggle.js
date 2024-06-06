@@ -1,7 +1,6 @@
 import { createProfileBtnImg } from "../components/profile.js";
 import { createElement } from "./createElement.js";
 import { parseDate } from "./parse.js";
-import { handleSubmitListing } from "../listing/post.js";
 
 const authBtns = document.getElementById("auth-btns");
 const profileBtn = document.getElementById("profile-btn");
@@ -49,14 +48,6 @@ export const toggleBtnClass = (id, containerClass, childrenClass) => {
       btn.classList.remove(childrenClass);
     }
   });
-};
-
-export const toggleListingBtn = () => {
-  const user = localStorage.getItem("user");
-  if (user) {
-    const listingForm = document.getElementById("listing-form");
-    listingForm.addEventListener("submit", handleSubmitListing);
-  }
 };
 
 /**

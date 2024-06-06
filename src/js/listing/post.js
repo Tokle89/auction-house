@@ -10,6 +10,7 @@ import { sendListing } from "./index.js";
  */
 export const handleSubmitListing = () => {
   event.preventDefault();
+  console.log("submitting listing");
 
   const [title, description, tags, endsAt] = event.target.elements;
 
@@ -17,17 +18,19 @@ export const handleSubmitListing = () => {
   const mediaGallery = document.querySelectorAll(`input[name="media"]:enabled`);
 
   mediaGallery.forEach((media) => {
-    mediaArr.push(media.value);
+    if (media.value.trim() !== "") {
+      mediaArr.push(media.value);
+    }
   });
 
-  if (mediaArr.length === 0) {
-    mediaArr = null;
-  }
-
-  const tagsArr = tags.value.replace(/\s+/g, "").split(",");
+  const tagsArr = tags.value
+    .replace(/\s+/g, "")
+    .split(",")
+    .filter((tag) => tag !== "");
 
   sendListing(
     "POST",
+    null,
     title,
     description,
     tagsArr,
