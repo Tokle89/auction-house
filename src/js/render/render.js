@@ -35,7 +35,7 @@ export const renderCards = (url, data) => {
         if (result.errors) {
           alert(result.errors[0].message);
         }
-        result.forEach((listing, i) => {
+        result.data.forEach((listing, i) => {
           const listingCard = createListingCard(listing);
           if (i > 9) {
             listingCard.classList.add("d-none");
@@ -100,7 +100,7 @@ export const renderListing = (url) => {
       if (result.errors) {
         alert(result.errors[0].message);
       }
-      const listing = createListing(result);
+      const listing = createListing(result.data);
       container.append(listing);
 
       const date = result.endsAt;
@@ -109,7 +109,7 @@ export const renderListing = (url) => {
     })
 
     .catch((error) => {
-      alert.log(error);
+      console.log(error);
     });
 };
 /**
@@ -161,12 +161,7 @@ export const renderProfileListings = (value) => {
     id = storage.get("user").name;
   }
 
-  let newUrl =
-    url.BASE +
-    url.PROFILE +
-    `/${id}` +
-    "/listings" +
-    "?&_seller=true&_bids=true&sort=created&sortOrder=desc";
+  let newUrl = url.BASE + url.PROFILE + `/${id}` + "/listings" + "?&_seller=true&_bids=true&sort=created&sortOrder=desc";
 
   const container = document.querySelector(".cards-container");
   container.classList.add("row-cols-sm-2");
@@ -205,9 +200,7 @@ export const renderProfileListings = (value) => {
       .then(({ wins }) => {
         if (wins.length > 0) {
           wins.forEach((listing) => {
-            apiCall(
-              url.BASE + url.LISTINGS + `/${listing}` + url.listingsParams,
-            ).then((result) => {
+            apiCall(url.BASE + url.LISTINGS + `/${listing}` + url.listingsParams).then((result) => {
               const listingCard = createListingCard(result);
               container.append(listingCard);
             });
