@@ -45,7 +45,8 @@ const filterListings = async (listingArr, id) => {
   let listings;
 
   if (!listingArr) {
-    listings = await apiCall(url.BASE + url.LISTINGS + url.listingsParams);
+    const results = await apiCall(url.BASE + url.LISTINGS + url.listingsParams);
+    listings = results.data;
   } else {
     listings = listingArr;
   }

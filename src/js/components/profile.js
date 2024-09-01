@@ -1,6 +1,7 @@
 import * as storage from "../storage/index.js";
 import { createElement } from "../utils/createElement.js";
 import { handleLogout } from "../auth/logout.js";
+import { checkMedia } from "../utils/media.js";
 
 /**
  * Creates a profile button, with the user avatar.
@@ -19,7 +20,7 @@ export const createProfileBtnImg = () => {
   const { name, avatar } = user;
   img.src = "../../../images/profile.jpg";
   if (avatar) {
-    img.src = avatar;
+    img.src = avatar.url;
     img.alt = name;
   }
 };
@@ -57,35 +58,11 @@ export const createProfileBtnImg = () => {
  */
 
 export const createProfile = ({ name, email, _count, credits, avatar }) => {
-  const element = createElement("div", [
-    "profile-info",
-    "container",
-    "d-flex",
-    "align-items-center",
-    "justify-content-center",
-  ]);
-  const img = createElement(
-    "img",
-    ["profile-avatar", "rounded-circle"],
-    undefined,
-    undefined,
-    undefined,
-    avatar,
-    name,
-  );
-  const h1 = createElement(
-    "h1",
-    ["fs-4", "fw-bold", "mb-0", "text-capitalize"],
-    undefined,
-    name,
-  );
+  const element = createElement("div", ["profile-info", "container", "d-flex", "align-items-center", "justify-content-center"]);
+  const img = createElement("img", ["profile-avatar", "rounded-circle"], undefined, undefined, undefined, checkMedia(avatar), name);
+  const h1 = createElement("h1", ["fs-4", "fw-bold", "mb-0", "text-capitalize"], undefined, name);
   const p = createElement("p", ["text-dark"], undefined, email);
-  const secondP = createElement(
-    "p",
-    ["fw-bold", "text-secondary", "mb-0"],
-    undefined,
-    `Listings: ${_count.listings}`,
-  );
+  const secondP = createElement("p", ["fw-bold", "text-secondary", "mb-0"], undefined, `Listings: ${_count.listings}`);
   const div = createElement("div", ["ps-4"], [h1, p, secondP]);
   const editBtn = createDropDownBtn();
   element.append(img, div, editBtn);
@@ -126,47 +103,23 @@ export const createProfile = ({ name, email, _count, credits, avatar }) => {
 const createDropDownBtn = () => {
   const element = createElement("div", ["dropdown", "align-self-start"]);
   const icon = createElement("i", ["bi", "bi-gear", "pb-4"]);
-  const btn = createElement(
-    "button",
-    ["listing-modal_btn", "edit-btn", "ms-2"],
-    [icon],
-  );
+  const btn = createElement("button", ["listing-modal_btn", "edit-btn", "ms-2"], [icon]);
   btn.dataset.bsToggle = "dropdown";
   btn.dataset.bsTarget = "#dropdownMenu";
 
-  const logoutBtn = createElement(
-    "button",
-    ["dropdown-item", "listing-modal_btn", "text-link", "ps-1", "py-2"],
-    undefined,
-    "Sign out",
-  );
+  const logoutBtn = createElement("button", ["dropdown-item", "listing-modal_btn", "text-link", "ps-1", "py-2"], undefined, "Sign out");
   logoutBtn.addEventListener("click", handleLogout);
 
   const li = createElement("li", undefined, [logoutBtn]);
   const hr = createElement("hr", ["dropdown-divider"]);
   const li2 = createElement("li", undefined, [hr]);
 
-  const editBtn = createElement(
-    "button",
-    ["dropdown-item", "listing-modal_btn", "text-link", "ps-1", "py-2"],
-    undefined,
-    "Edit Profile",
-  );
+  const editBtn = createElement("button", ["dropdown-item", "listing-modal_btn", "text-link", "ps-1", "py-2"], undefined, "Edit Profile");
   editBtn.dataset.bsToggle = "modal";
   editBtn.dataset.bsTarget = "#edit-avatar-modal";
 
   const li3 = createElement("li", undefined, [editBtn]);
-  const ul = createElement(
-    "ul",
-    [
-      "dropdown-menu",
-      "dropdown-menu-start",
-      "text-secondary",
-      "border",
-      "border-warning",
-    ],
-    [li, li2, li3],
-  );
+  const ul = createElement("ul", ["dropdown-menu", "dropdown-menu-start", "text-secondary", "border", "border-warning"], [li, li2, li3]);
   ul.id = "dropdownMenu";
 
   element.append(btn, ul);

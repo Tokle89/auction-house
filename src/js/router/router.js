@@ -1,10 +1,4 @@
-import {
-  renderCards,
-  renderCarousel,
-  renderListing,
-  renderProfile,
-  renderProfileListings,
-} from "../render/render.js";
+import { renderCards, renderCarousel, renderListing, renderProfile, renderProfileListings } from "../render/render.js";
 import * as url from "../api/constant.js";
 import { handleRegister } from "../auth/register.js";
 import { displayRegisteredMsg } from "../components/userMsgs.js";

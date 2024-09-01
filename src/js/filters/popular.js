@@ -17,12 +17,9 @@ export const fetchPopularListings = async (array) => {
   let offset = 0;
 
   if (!array) {
-    while (ListingsArr.length < 30 && offset < 150) {
-      const response = await apiCall(url.BASE + url.LISTINGS + url.listingsParams + `&offset=${offset}`);
-      console.log(response, "response");
+    while (ListingsArr.length < 50) {
+      const listings = await apiCall(url.BASE + url.LISTINGS + url.listingsParams + `&offset=${offset}`);
 
-      const listings = response.data;
-      console.log(listings, "listings");
       const sortedListings = sortListingsByBids(listings);
       ListingsArr.push(...sortedListings);
 

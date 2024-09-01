@@ -35,8 +35,10 @@ export const renderCards = (url, data) => {
         if (result.errors) {
           alert(result.errors[0].message);
         }
-        result.forEach((listing, i) => {
+
+        result.data.forEach((listing, i) => {
           const listingCard = createListingCard(listing);
+
           if (i > 9) {
             listingCard.classList.add("d-none");
           }
@@ -100,16 +102,16 @@ export const renderListing = (url) => {
       if (result.errors) {
         alert(result.errors[0].message);
       }
-      const listing = createListing(result);
+      const listing = createListing(result.data);
       container.append(listing);
 
-      const date = result.endsAt;
+      const date = result.data.endsAt;
       countDown(date);
       createEditModalContent(result);
     })
 
     .catch((error) => {
-      alert.log(error);
+      console.log(error);
     });
 };
 /**
@@ -120,6 +122,7 @@ export const renderListing = (url) => {
  * renderProfile(profileUrl);
  */
 export const renderProfile = (profileUrl) => {
+  const apiKey = import.meta.env.VITE_API_KEY;
   const profileContainer = document.querySelector(".profile-section");
   profileContainer.innerHTML = "";
   const fetchOptions = {
@@ -127,6 +130,7 @@ export const renderProfile = (profileUrl) => {
     headers: {
       application: "application/json",
       Authorization: `Bearer ${storage.get("token")}`,
+      "X-Noroff-Api-Key": apiKey,
     },
   };
 
@@ -135,7 +139,8 @@ export const renderProfile = (profileUrl) => {
       if (result.errors) {
         alert(result.errors[0].message);
       }
-      const profile = createProfile(result);
+      console.log(result);
+      const profile = createProfile(result.data);
       profileContainer.append(profile);
     })
 
@@ -157,16 +162,12 @@ export const renderProfile = (profileUrl) => {
  */
 export const renderProfileListings = (value) => {
   let id = getQueryParamId("id");
+  const apiKey = import.meta.env.VITE_API_KEY;
   if (!id) {
     id = storage.get("user").name;
   }
 
-  let newUrl =
-    url.BASE +
-    url.PROFILE +
-    `/${id}` +
-    "/listings" +
-    "?&_seller=true&_bids=true&sort=created&sortOrder=desc";
+  let newUrl = url.BASE + url.PROFILE + `/${id}` + "/listings" + "?&_seller=true&_bids=true&sort=created&sortOrder=desc";
 
   const container = document.querySelector(".cards-container");
   container.classList.add("row-cols-sm-2");
@@ -177,6 +178,7 @@ export const renderProfileListings = (value) => {
     headers: {
       application: "application/json",
       Authorization: `Bearer ${storage.get("token")}`,
+      "X-Noroff-Api-Key": apiKey,
     },
   };
 
@@ -187,8 +189,9 @@ export const renderProfileListings = (value) => {
         if (result.errors) {
           alert(result.errors[0].message);
         }
-        if (result.length > 0) {
-          result.forEach(({ listing, amount }) => {
+        const bids = result.data;
+        if (bids.length > 0) {
+          bids.forEach(({ listing, amount }) => {
             const listingCard = createListingCard(listing, amount);
             container.append(listingCard);
           });
@@ -202,12 +205,11 @@ export const renderProfileListings = (value) => {
   } else if (value === "wins") {
     newUrl = url.BASE + url.PROFILE + `/${id}` + url.profileParams;
     apiCall(newUrl, fetchOptions)
-      .then(({ wins }) => {
-        if (wins.length > 0) {
+      .then((result) => {
+        const { wins } = result.data;
+        if (wins && wins.length > 0) {
           wins.forEach((listing) => {
-            apiCall(
-              url.BASE + url.LISTINGS + `/${listing}` + url.listingsParams,
-            ).then((result) => {
+            apiCall(url.BASE + url.LISTINGS + `/${listing}` + url.listingsParams).then((result) => {
               const listingCard = createListingCard(result);
               container.append(listingCard);
             });
@@ -225,8 +227,8 @@ export const renderProfileListings = (value) => {
         if (result.errors) {
           alert(result.errors[0].message);
         }
-        if (result.length > 0) {
-          result.forEach((listing) => {
+        if (result.data.length > 0) {
+          result.data.forEach((listing) => {
             const listingCard = createListingCard(listing);
             container.append(listingCard);
           });

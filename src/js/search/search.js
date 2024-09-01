@@ -20,20 +20,15 @@ export const search = async (value) => {
   let offset = 0;
 
   while (listingArr.length < 50 && offset < 500) {
-    const listings = await apiCall(
-      url.BASE + url.LISTINGS + url.listingsParams + `&offset=${offset}`,
-    );
-
+    const response = await apiCall(url.BASE + url.LISTINGS + url.listingsParams + `&offset=${offset}`);
+    const listings = response.data;
     const filteredListings = listings.filter(({ title, description }) => {
       let desc = "";
       if (description) {
         const stringifiedDesc = JSON.stringify(description);
         desc = stringifiedDesc.toLocaleLowerCase();
       }
-      return (
-        title.toLowerCase().includes(value.toLowerCase()) ||
-        desc.includes(value.toLowerCase())
-      );
+      return title.toLowerCase().includes(value.toLowerCase()) || desc.includes(value.toLowerCase());
     });
 
     listingArr.push(...filteredListings);
