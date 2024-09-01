@@ -1,10 +1,4 @@
-import {
-  renderCards,
-  renderCarousel,
-  renderListing,
-  renderProfile,
-  renderProfileListings,
-} from "../render/render.js";
+import { renderCards, renderCarousel, renderListing, renderProfile, renderProfileListings } from "../render/render.js";
 import * as url from "../api/constant.js";
 import { handleRegister } from "../auth/register.js";
 import { displayRegisteredMsg } from "../components/userMsgs.js";
@@ -44,7 +38,7 @@ export const router = () => {
       id = storage.get("user").name;
     }
     renderProfile(url.BASE + url.PROFILE + `/${id}` + url.profileParams);
-    renderProfileListings("listings");
+    // renderProfileListings("listings");
     toggleProfileListings();
     avatarForm.addEventListener("submit", handleAvatarEdit);
   } else if (href.includes("listing")) {

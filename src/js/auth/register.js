@@ -50,12 +50,15 @@ const registerUser = (username, email, password, avatar) => {
       name: username.value,
       email: email.value,
       password: password.value,
-      avatar: avatar.value,
+      avatar: avatar.value ? { url: avatar.value } : undefined,
     }),
   };
 
+  console.log(fetchOptions.body);
+
   apiCall(url.BASE + url.REGISTER, fetchOptions)
     .then((result) => {
+      console.log(result);
       if (result.errors) {
         alert(result.errors[0].message);
       } else {

@@ -24,7 +24,6 @@ import { findLatestBid } from "../utils/bidChecker.js";
 
 export const createCarouselCard = ({ id, title, endsAt, bids, description, media }) => {
   const element = createElement("div", ["carousel-item"]);
-  console.log(id, title, endsAt, bids, description, media);
   const img = createCarouselCardImg(media, title);
   const textContainer = createTextContainer(id, title, endsAt, bids, description);
 
@@ -72,8 +71,6 @@ const createTextContainer = (id, title, endsAt, bids, description) => {
   const paragraph2 = createElement("p", undefined, undefined, `Ends at: ${parseDate(endsAt)}`);
   const span = createElement("span", undefined, undefined);
   if (bids.length > 0) {
-    // const latestBid = findLatestBid(bids);
-    // const span = createElement("span", undefined, undefined, latestBid.amount);
     span.textContent = `${findLatestBid(bids).amount} EUR`;
   } else {
     span.textContent = "No bids yet";

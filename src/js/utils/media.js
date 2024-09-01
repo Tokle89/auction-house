@@ -10,9 +10,6 @@
  */
 
 export const checkMedia = (media) => {
-  if (media && media.length > 0 && media.includes("http")) {
-    return media;
-  } else {
-    return "https://via.placeholder.com/300x200?text=No+image+available";
-  }
+  const url = Array.isArray(media) ? media[0]?.url : media?.url;
+  return url && url.includes("http") ? url : "https://via.placeholder.com/300x200?text=No+image+available";
 };

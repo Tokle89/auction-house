@@ -70,7 +70,7 @@ const loginUser = (email, password) => {
       console.log(result.errors[0]);
       alert(result.errors[0].message);
     } else {
-      let { accessToken, name, email, avatar, credits } = result;
+      let { accessToken, name, email, avatar, credits } = result.data;
       storage.save("token", accessToken);
       storage.save("user", {
         name: name,

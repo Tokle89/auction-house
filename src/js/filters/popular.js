@@ -17,14 +17,14 @@ export const fetchPopularListings = async (array) => {
   let offset = 0;
 
   if (!array) {
-    while (ListingsArr.length < 50 && offset < 500) {
+    while (ListingsArr.length < 30 && offset < 150) {
       const response = await apiCall(url.BASE + url.LISTINGS + url.listingsParams + `&offset=${offset}`);
-      const listings = response.data;
 
+      const listings = response.data;
       const sortedListings = sortListingsByBids(listings);
       ListingsArr.push(...sortedListings);
 
-      offset += 100;
+      offset += 50;
     }
   } else {
     const sortedListings = sortListingsByBids(array);
@@ -44,7 +44,7 @@ export const fetchPopularListings = async (array) => {
  * sortListingsByBids(listings);
  */
 const sortListingsByBids = (listings) => {
-  const sortedListings = listings.filter(({ bids }) => bids.length >= 0);
+  const sortedListings = listings.filter(({ bids }) => bids.length > 0);
 
   return sortedListings;
 };
