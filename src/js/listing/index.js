@@ -17,42 +17,36 @@ import { apiCall } from "../api/api.js";
  * sendListing(method, id, title, description, tags, endsAt, media);
  */
 
-export const sendListing = (
-  method,
-  id,
-  title,
-  description,
-  tags,
-  endsAt,
-  media,
-) => {
+export const sendListing = (method, id, title, description, tags, endsAt, media) => {
+  const apiKey = import.meta.env.VITE_API_KEY;
   try {
     const fetchOptions = {
       method: method,
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${storage.get("token")}`,
+        "X-Noroff-Api-Key": apiKey,
       },
       body: JSON.stringify({
-        title: title.value,
-        description: description.value,
-        endsAt: endsAt,
+        title: title,
+        description: description,
+        endsAt: endsAt.toISOString(),
         tags: tags,
         media: media,
       }),
     };
-    let newUrl = url.BASE + url.LISTINGS;
 
+    let newUrl = url.BASE + url.LISTINGS;
     if (id) {
       newUrl = url.BASE + url.LISTINGS + `/${id}`;
     }
-    console.log(fetchOptions.body);
+
     apiCall(newUrl, fetchOptions).then((result) => {
-      console.log(result);
       if (result.errors) {
         alert(result.errors[0].message);
       } else {
-        window.location.replace(`../../../listing/?id=${result.id}`);
+        window.location.replace(`../../../listing/?id=${result.data.id}`);
+        return result;
       }
     });
   } catch (error) {

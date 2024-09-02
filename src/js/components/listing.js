@@ -24,22 +24,8 @@ import { findLatestBid } from "../utils/bidChecker.js";
  * //Example usage:
  * const element = createListing({ media, title, description, seller, created, bids, id });
  */
-export const createListing = ({
-  media,
-  title,
-  description,
-  seller,
-  created,
-  bids,
-  id,
-}) => {
-  const element = createElement("div", [
-    "container",
-    "listing-details_container",
-    "d-flex",
-    "flex-lg-row",
-    "flex-column",
-  ]);
+export const createListing = ({ media, title, description, seller, created, bids, id }) => {
+  const element = createElement("div", ["container", "listing-details_container", "d-flex", "flex-lg-row", "flex-column"]);
   const listingContent = createContentContainer(media, title, description);
   const listingInfo = createListingInfoContainer(seller, created, bids, id);
   element.append(listingContent, listingInfo);
@@ -80,15 +66,7 @@ const createContentContainer = (media, title, description) => {
 const createImgContainer = (media, title) => {
   const element = createElement("div", ["img-container"]);
 
-  const mainImg = createElement(
-    "img",
-    ["main-image"],
-    undefined,
-    undefined,
-    undefined,
-    checkMedia(media[0]),
-    title,
-  );
+  const mainImg = createElement("img", ["main-image"], undefined, undefined, undefined, checkMedia(media[0]), title);
   element.append(mainImg);
   mainImg.dataset.bsToggle = "modal";
   mainImg.dataset.bsTarget = "#img-modal";
@@ -98,23 +76,11 @@ const createImgContainer = (media, title) => {
   });
 
   if (media.length > 1) {
-    const thumbnailContainer = createElement("div", [
-      "thumbnail-container",
-      "d-flex",
-      "justify-content-between",
-    ]);
+    const thumbnailContainer = createElement("div", ["thumbnail-container", "d-flex", "justify-content-between"]);
 
     media.slice(1).forEach((img) => {
       let checkedImg = checkMedia(img);
-      const thumbnailImg = createElement(
-        "img",
-        ["thumbnail"],
-        undefined,
-        undefined,
-        undefined,
-        checkedImg,
-        title,
-      );
+      const thumbnailImg = createElement("img", ["thumbnail"], undefined, undefined, undefined, checkedImg, title);
 
       thumbnailImg.addEventListener("click", () => {
         const currentMainImgSrc = mainImg.src;
@@ -168,28 +134,14 @@ const createTextContainer = (title, description) => {
 const createListingInfoContainer = (seller, created, bids, id) => {
   const element = createElement("div", ["listing-info", "container"]);
 
-  const h2 = createElement(
-    "h2",
-    ["fw-bold", "mb-3", "fs-5"],
-    undefined,
-    "Time Remaining",
-  );
+  const h2 = createElement("h2", ["fw-bold", "mb-3", "fs-5"], undefined, "Time Remaining");
 
-  const timeRemainingContainer = createElement("div", [
-    "d-flex",
-    "justify-content-evenly",
-    "time-remaining-container",
-  ]);
+  const timeRemainingContainer = createElement("div", ["d-flex", "justify-content-evenly", "time-remaining-container"]);
   const dayContainer = createTimeContainer("days-container", "Days");
   const hourContainer = createTimeContainer("hours-container", "Hours");
   const minuteContainer = createTimeContainer("min-container", "Min");
   const secondContainer = createTimeContainer("sec-container", "Sec");
-  timeRemainingContainer.append(
-    dayContainer,
-    hourContainer,
-    minuteContainer,
-    secondContainer,
-  );
+  timeRemainingContainer.append(dayContainer, hourContainer, minuteContainer, secondContainer);
 
   const bidInfoContainer = createBidInfoContainer(seller, created, bids, id);
   let user = storage.get("user");
@@ -217,17 +169,7 @@ const createListingInfoContainer = (seller, created, bids, id) => {
  *
  */
 const createTimeContainer = (className, text) => {
-  const element = createElement("div", [
-    "bg-danger",
-    "text-white",
-    "time-container",
-    "text-center",
-    "fw-bold",
-    "d-flex",
-    "flex-column",
-    "align-items-center",
-    "justify-content-center",
-  ]);
+  const element = createElement("div", ["bg-danger", "text-white", "time-container", "text-center", "fw-bold", "d-flex", "flex-column", "align-items-center", "justify-content-center"]);
   const p = createElement("p", [className], undefined);
   const secondP = createElement("p", undefined, undefined, text);
   element.append(p, secondP);
@@ -247,20 +189,9 @@ const createTimeContainer = (className, text) => {
  * const element = createBidInfoContainer(seller, created, bids, id);
  */
 const createBidInfoContainer = (seller, created, bids, id) => {
-  const element = createElement("div", [
-    "mt-5",
-    "border",
-    "border-warning",
-    "p-3",
-    "bg-white",
-  ]);
+  const element = createElement("div", ["mt-5", "border", "border-warning", "p-3", "bg-white"]);
   const profileContainer = createProfileContainer(seller);
-  const border = createElement("div", [
-    "border-bottom",
-    "border-secondary",
-    "py-1",
-    "mb-2",
-  ]);
+  const border = createElement("div", ["border-bottom", "border-secondary", "py-1", "mb-2"]);
   const infoContainer = createInfoContainer(created, bids, id);
   element.append(profileContainer, border, infoContainer);
   return element;
@@ -282,73 +213,35 @@ const createBidInfoContainer = (seller, created, bids, id) => {
  */
 const createInfoContainer = (created, bids, id) => {
   const element = createElement("div", ["info-container"]);
-
-  const p = createElement(
-    "p",
-    undefined,
-    undefined,
-    `Created: ${parseDate(created)}`,
-  );
+  const p = createElement("p", undefined, undefined, `Created: ${parseDate(created)}`);
   const secondP = createElement("p", ["fw-bold"], undefined, "Current bid:");
   const thirdP = createElement("p");
   const fourthP = createElement("p");
 
   if (bids.length > 0) {
-    const { bidderName, amount } = findLatestBid(bids);
+    const { bidder, amount } = findLatestBid(bids);
 
-    thirdP.append(`By: ${bidderName}`);
-    const price = createElement(
-      "span",
-      ["text-danger", "fw-bold"],
-      undefined,
-      `${amount} EUR`,
-    );
+    thirdP.append(`By: ${bidder.name.toUpperCase()}`);
+    const price = createElement("span", ["text-danger", "fw-bold"], undefined, `${amount} EUR`);
     fourthP.append(`Amount: `, price);
   } else {
     thirdP.append("No bids yet!");
     fourthP.append("Be the first to bid!");
     fourthP.classList.add("text-secondary", "fw-bold");
   }
-  const link = createElement(
-    "a",
-    ["text-primary", "fw-bold", "mt-1", "text-decoration-underline", "fs-5"],
-    undefined,
-    "Please login in to bid",
-    `../../../auth/login/`,
-  );
+  const link = createElement("a", ["text-primary", "fw-bold", "mt-1", "text-decoration-underline", "fs-5"], undefined, "Please login in to bid", `../../../auth/login/`);
 
   element.append(p, secondP, thirdP, fourthP, link);
   const LoggedId = storage.get("user");
   if (LoggedId) {
-    const fundsP = createElement(
-      "p",
-      ["text-secondary", "fw-bold"],
-      undefined,
-      `Funds: ${storage.get("user").credit} EUR`,
-    );
+    const fundsP = createElement("p", ["text-secondary", "fw-bold"], undefined, `Funds: ${storage.get("user").credits} EUR`);
 
     link.classList.add("d-none");
-    const container = createElement(
-      "div",
-      [
-        "d-flex",
-        "justify-content-between",
-        "align-items-start",
-        "align-items-sm-end",
-        "flex-column",
-        "flex-sm-row",
-      ],
-      [fourthP, fundsP],
-    );
+    const container = createElement("div", ["d-flex", "justify-content-between", "align-items-start", "align-items-sm-end", "flex-column", "flex-sm-row"], [fourthP, fundsP]);
 
     const form = createBidForm(id, bids);
     const bidsContainer = createElement("div", ["bids-container", "mt-3"]);
-    const button = createElement(
-      "button",
-      ["btn", "btn-white", "border-primary", "view"],
-      undefined,
-      "View All Bids",
-    );
+    const button = createElement("button", ["btn", "btn-white", "border-primary", "view"], undefined, "View All Bids");
     button.addEventListener("click", () => {
       toggleBids(button, bidsContainer, bids);
     });
@@ -370,11 +263,7 @@ const createInfoContainer = (created, bids, id) => {
  * const element = createBidForm(id, bid);
  */
 const createBidForm = (id, bid) => {
-  const element = createElement("form", [
-    "d-flex",
-    "flex-column",
-    "flex-sm-row",
-  ]);
+  const element = createElement("form", ["d-flex", "flex-column", "flex-sm-row"]);
   element.action = "post";
   element.id = "bid-form";
   const input = createElement("input", ["form-control", "mb-4"]);
@@ -384,12 +273,7 @@ const createBidForm = (id, bid) => {
   input.type = "number";
   input.min = minBid(bid);
 
-  const button = createElement(
-    "button",
-    ["btn", "btn-secondary", "mb-4"],
-    undefined,
-    "Bid",
-  );
+  const button = createElement("button", ["btn", "btn-secondary", "mb-4"], undefined, "Bid");
   button.type = "submit";
   element.append(input, button);
 
@@ -411,22 +295,8 @@ const createBidForm = (id, bid) => {
  *
  */
 const createProfileContainer = ({ name, email, avatar }) => {
-  const element = createElement(
-    "a",
-    ["profile-info", "d-flex", "align-items-center", "flex-wrap"],
-    undefined,
-    undefined,
-    `../profile/index.html?id=${name}`,
-  );
-  const img = createElement(
-    "img",
-    ["profile-avatar", "rounded-circle", "me-4"],
-    undefined,
-    undefined,
-    undefined,
-    checkMedia(avatar),
-    name,
-  );
+  const element = createElement("a", ["profile-info", "d-flex", "align-items-center", "flex-wrap"], undefined, undefined, `../profile/index.html?id=${name}`);
+  const img = createElement("img", ["profile-avatar", "rounded-circle", "me-4"], undefined, undefined, undefined, checkMedia(avatar), name);
   const h3 = createElement("h3", ["fs-5", "fw-bold", "mb-o"], undefined, name);
   const p = createElement("p", ["text-dark"], undefined, email);
   const div = createElement("div", undefined, [h3, p]);
@@ -447,38 +317,19 @@ const createProfileContainer = ({ name, email, avatar }) => {
 const createEditDropdown = (id) => {
   const element = createElement("div", ["dropdown", "mb-2", "mt-5"]);
   element.id = "edit-dropdown";
-  const btn = createElement(
-    "button",
-    ["btn", "btn-primary", "dropdown-toggle"],
-    undefined,
-    "Edit Listing",
-  );
+  const btn = createElement("button", ["btn", "btn-primary", "dropdown-toggle"], undefined, "Edit Listing");
   btn.dataset.bsToggle = "dropdown";
-  const editBtn = createElement(
-    "button",
-    ["listing-modal_btn", "text-link", "text-primary", "dropdown-item", "p-2"],
-    undefined,
-    "Edit Listing",
-  );
+  const editBtn = createElement("button", ["listing-modal_btn", "text-link", "text-primary", "dropdown-item", "p-2"], undefined, "Edit Listing");
   editBtn.dataset.bsToggle = "modal";
   editBtn.dataset.bsTarget = "#edit-listing-modal";
-  const deleteBtn = createElement(
-    "button",
-    ["listing-modal_btn", "text-link", "text-primary", "dropdown-item", "p-2"],
-    undefined,
-    "Delete Listing",
-  );
+  const deleteBtn = createElement("button", ["listing-modal_btn", "text-link", "text-primary", "dropdown-item", "p-2"], undefined, "Delete Listing");
   deleteBtn.addEventListener("click", () => {
     deleteListing(id);
   });
 
   const li = createElement("li", undefined, [editBtn]);
   const li2 = createElement("li", undefined, [deleteBtn]);
-  const ul = createElement(
-    "ul",
-    ["dropdown-menu", "dropdown-menu-start", "border", "border-primary"],
-    [li, li2],
-  );
+  const ul = createElement("ul", ["dropdown-menu", "dropdown-menu-start", "border", "border-primary"], [li, li2]);
   element.append(btn, ul);
 
   return element;

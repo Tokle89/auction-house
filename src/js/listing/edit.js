@@ -12,34 +12,28 @@ import { sendListing } from "./index.js";
 export const handleEditListing = (id) => {
   event.preventDefault();
 
-  const [title, description, tags, endsAt] = event.target.elements;
+  const form = event.target;
+  const [titleElement, descriptionElement, tagsElement, endsAtElement] = form.elements;
 
   let mediaArr = [];
-
-  const form = document.getElementById("edit-listing-form");
   const mediaGallery = form.querySelectorAll(`input[name="media"]:enabled`);
 
   mediaGallery.forEach((input) => {
-    if (input.value !== "") {
-      mediaArr.push(input.value);
-    } else {
-      input.disabled = true;
+    if (input.value.trim() !== "") {
+      mediaArr.push({ url: input.value, alt: titleElement.value });
     }
   });
 
-  if (mediaArr.length === 0) {
-    mediaArr = null;
-  }
+  const tagsArr = tagsElement.value
+    .replace(/\s+/g, "")
+    .split(",")
+    .filter((tag) => tag !== "");
 
-  const tagsArr = tags.value.replace(/\s+/g, "").split(",");
-
-  sendListing(
-    "PUT",
-    id,
-    title,
-    description,
-    tagsArr,
-    new Date(endsAt.value),
-    mediaArr,
-  );
+  sendListing("PUT", id, titleElement.value, descriptionElement.value, tagsArr, new Date(endsAtElement.value), mediaArr)
+    .then(() => {
+      form.reset();
+    })
+    .catch((error) => {
+      console.error("Error updating listing:", error);
+    });
 };

@@ -54,7 +54,7 @@ import { findLatestBid } from "../utils/bidChecker.js";
  */
 export const createListingCard = ({ id, title, bids, endsAt, media }, amount) => {
   const element = createElement("div", ["col", "py-4", "d-flex,", "justify-content-center", "card-container"]);
-  const image = imgContainer(media, title);
+  const image = media ? imgContainer(media, title) : imgContainer([{ url: "https://via.placeholder.com/300x200?text=No+image+available" }], title);
   const cardBodyElement = cardBody(id, title, endsAt, bids, amount);
   const card = createElement("div", ["card", "d-flex", "flex-column", "justify-content-center", "flex-lg-row", "border", "border-warning"], [image, cardBodyElement]);
 

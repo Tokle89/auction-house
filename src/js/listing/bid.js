@@ -28,26 +28,26 @@ export const handleBid = (id) => {
  * sendBid(id, amount);
  */
 const sendBid = (id, amount) => {
+  const apiKey = import.meta.env.VITE_API_KEY;
   const fetchOptions = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${storage.get("token")}`,
+      "X-Noroff-Api-Key": apiKey,
     },
     body: JSON.stringify({
       amount: amount,
     }),
   };
-  apiCall(url.BASE + url.LISTINGS + `/${id}/bids`, fetchOptions).then(
-    (result) => {
-      if (result.errors) {
-        alert(result.errors[0].message);
-      } else {
-        updateCredit();
-        setTimeout(() => {
-          window.location.replace(`../../../listing/?id=${result.id}`);
-        }, 400);
-      }
-    },
-  );
+  apiCall(url.BASE + url.LISTINGS + `/${id}/bids`, fetchOptions).then((result) => {
+    if (result.errors) {
+      alert(result.errors[0].message);
+    } else {
+      updateCredit();
+      setTimeout(() => {
+        window.location.replace(`../../../listing/?id=${result.data.id}`);
+      }, 400);
+    }
+  });
 };

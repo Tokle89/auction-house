@@ -8,33 +8,33 @@ import { sendListing } from "./index.js";
  * handleSubmitListing();
  *
  */
+
 export const handleSubmitListing = () => {
   event.preventDefault();
+  const form = event.target;
   console.log("submitting listing");
 
-  const [title, description, tags, endsAt] = event.target.elements;
+  const [titleElement, descriptionElement, tagsElement, endsAtElement] = form.elements;
 
   let mediaArr = [];
   const mediaGallery = document.querySelectorAll(`input[name="media"]:enabled`);
 
   mediaGallery.forEach((media) => {
     if (media.value.trim() !== "") {
-      mediaArr.push(media.value);
+      mediaArr.push({ url: media.value, alt: titleElement.value });
     }
   });
 
-  const tagsArr = tags.value
+  const tagsArr = tagsElement.value
     .replace(/\s+/g, "")
     .split(",")
     .filter((tag) => tag !== "");
 
-  sendListing(
-    "POST",
-    null,
-    title,
-    description,
-    tagsArr,
-    new Date(endsAt.value),
-    mediaArr,
-  );
+  sendListing("POST", null, titleElement.value, descriptionElement.value, tagsArr, new Date(endsAtElement.value), mediaArr)
+    .then(() => {
+      form.reset();
+    })
+    .catch((error) => {
+      console.error("Error submitting listing:", error);
+    });
 };

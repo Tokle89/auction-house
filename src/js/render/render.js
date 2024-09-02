@@ -107,7 +107,7 @@ export const renderListing = (url) => {
 
       const date = result.data.endsAt;
       countDown(date);
-      createEditModalContent(result);
+      createEditModalContent(result.data);
     })
 
     .catch((error) => {
@@ -139,9 +139,13 @@ export const renderProfile = (profileUrl) => {
       if (result.errors) {
         alert(result.errors[0].message);
       }
-      console.log(result);
       const profile = createProfile(result.data);
       profileContainer.append(profile);
+      const { credits } = result.data;
+      console.log(credits);
+      const user = storage.get("user");
+      user.credits = credits;
+      storage.save("user", user);
     })
 
     .catch((error) => {
@@ -210,7 +214,7 @@ export const renderProfileListings = (value) => {
         if (wins && wins.length > 0) {
           wins.forEach((listing) => {
             apiCall(url.BASE + url.LISTINGS + `/${listing}` + url.listingsParams).then((result) => {
-              const listingCard = createListingCard(result);
+              const listingCard = createListingCard(result.data);
               container.append(listingCard);
             });
           });

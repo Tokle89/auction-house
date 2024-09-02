@@ -12,11 +12,13 @@ import * as storage from "../storage/index.js";
  *
  */
 export const deleteListing = (id) => {
+  const apiKey = import.meta.env.VITE_API_KEY;
   apiCall(url.BASE + url.LISTINGS + `/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${storage.get("token")}`,
+      "X-Noroff-Api-Key": apiKey,
     },
   })
     .then(() => {
